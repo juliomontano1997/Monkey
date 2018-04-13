@@ -1,0 +1,488 @@
+import generated.ownErrors;
+import generated.ownParser;
+import generated.ownScanner;
+import org.antlr.v4.gui.Trees;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.misc.ParseCancellationException;
+import org.antlr.v4.runtime.tree.ParseTree;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.*;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class App extends JFrame
+{
+    File currentEditingFile = null;
+    int fontSize = 14;
+    ownScanner scanner = null;
+    ownParser parser = null;
+    ownErrors errors = null;
+    ParseTree tree = null;
+    java.util.concurrent.Future <JFrame> treeGUI = null;
+    org.antlr.v4.runtime.ANTLRInputStream input=null;
+    CommonTokenStream tokens = null;
+
+    /**
+     * Initialise the application
+     */
+    public App() {
+        initComponents();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+        fileOpener.setFileFilter(filter);
+
+        this.setLocationRelativeTo(null);
+        this.addWindowListener(
+                new WindowAdapter()
+                {
+                    @Override
+                    public void windowClosing(WindowEvent e)
+                    {
+                        super.windowClosing(e);
+                        int ans = JOptionPane.showConfirmDialog(rootPane, "Save Changes ?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (ans == JOptionPane.YES_OPTION)
+                        {
+                            saveChanges();
+                        }
+                    }
+                });
+
+        try
+        {
+            this.setIconImage(ImageIO.read(App.class.getResource("/icons/logoApp.PNG")));
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+    public App(File file)
+    {
+        initComponents();
+        this.setLocationRelativeTo(null);
+
+        currentEditingFile = file;
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+        fileOpener.setFileFilter(filter);
+        readTheParamFile(file);
+    }
+
+    /*
+     * Read the file and puts the content in the text area.
+     *
+     */
+    public void readTheParamFile(File file) {
+        try {
+            Scanner scn = new Scanner(file);
+            String buffer = "";
+            while (scn.hasNext()) {
+                buffer += scn.nextLine() + "\n";
+            }
+            display.setText(buffer);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /*
+     * Save the changes in the text archive
+     * */
+    public void saveChanges() {
+        try {
+            if(currentEditingFile==null)
+            {
+            }
+            PrintWriter printWriter = new PrintWriter(currentEditingFile);
+            printWriter.write(display.getText());
+            printWriter.close();
+            JOptionPane.showMessageDialog(rootPane, "Saved", "Done",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    private void initComponents() {
+
+        fileOpener = new JFileChooser();
+        saveDialog = new JFileChooser();
+        jPanel1 = new JPanel();
+        jToolBar1 = new JToolBar();
+        openButton = new JButton();
+        saveButton = new JButton();
+        treeButton = new JButton();
+        runButton = new JButton();
+        jScrollPane1 = new JScrollPane();
+        display = new JTextArea();
+        Mensajes = new JTabbedPane();
+        jScrollPane4 = new JScrollPane();
+        mensajesTXT = new JTextArea();
+        jScrollPane2 = new JScrollPane();
+        erroresTXT = new JTextArea();
+        posicionActual = new JLabel();
+
+        display.addCaretListener(new CaretListener() {
+            @Override
+            public void caretUpdate(CaretEvent e) {
+                JTextArea editArea = (JTextArea)e.getSource();
+                int linea = 1;
+                int columna = 1;
+
+                try
+                {
+                    int caretpos = editArea.getCaretPosition();
+                    linea= editArea.getLineOfOffset(caretpos);
+                    columna = caretpos - editArea.getLineStartOffset(linea);
+                    linea += 1;
+                }
+                catch (Exception error)
+                {
+
+                }
+
+                actualizarPosicionCursor(linea, columna);
+            }
+        });
+        saveDialog.setDialogType(JFileChooser.SAVE_DIALOG);
+        saveDialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Monkey editor");
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
+        jToolBar1.setBackground(new java.awt.Color(153, 153, 153));
+        jToolBar1.setRollover(true);
+
+        openButton.setBackground(new java.awt.Color(153, 153, 153));
+        openButton.setIcon(new ImageIcon(getClass().getResource("/icons/open.png"))); // NOI18N
+        openButton.setText("    Abrir  ");
+        openButton.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        openButton.setFocusable(false);
+        openButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        openButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        openButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(openButton);
+
+        saveButton.setBackground(new java.awt.Color(153, 153, 153));
+        saveButton.setIcon(new ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        saveButton.setText("  Guardar  ");
+        saveButton.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        saveButton.setFocusable(false);
+        saveButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        saveButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(saveButton);
+
+        runButton.setBackground(new java.awt.Color(153, 153, 153));
+        runButton.setIcon(new ImageIcon(getClass().getResource("/icons/run.png"))); // NOI18N
+        runButton.setText("  Ejecutar  ");
+        runButton.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        runButton.setFocusable(false);
+        runButton.setHorizontalAlignment(SwingConstants.RIGHT);
+        runButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        runButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        runButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(runButton);
+
+        treeButton.setBackground(new java.awt.Color(153, 153, 153));
+        treeButton.setIcon(new ImageIcon(getClass().getResource("/icons/arbol.png"))); // NOI18N
+        treeButton.setText("    Árbol  ");
+        treeButton.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        treeButton.setFocusable(false);
+        treeButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        treeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        treeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                treeButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(treeButton);
+
+        display.setColumns(20);
+        display.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        display.setLineWrap(true);
+        display.setRows(5);
+        jScrollPane1.setViewportView(display);
+
+        Mensajes.setBackground(new java.awt.Color(255, 255, 255));
+        Mensajes.setOpaque(true);
+
+        mensajesTXT.setEditable(false);
+        mensajesTXT.setBackground(new java.awt.Color(204, 204, 204));
+        mensajesTXT.setColumns(20);
+        mensajesTXT.setRows(5);
+        jScrollPane4.setViewportView(mensajesTXT);
+
+        Mensajes.addTab("Mensajes", jScrollPane4);
+
+        erroresTXT.setEditable(false);
+        erroresTXT.setBackground(new java.awt.Color(204, 204, 204));
+        erroresTXT.setColumns(20);
+        erroresTXT.setRows(5);
+        erroresTXT.setEnabled(true);
+        jScrollPane2.setViewportView(erroresTXT);
+
+        Mensajes.addTab("Errores", jScrollPane2);
+
+        posicionActual.setBackground(new java.awt.Color(255, 255, 255));
+        posicionActual.setText("O:0");
+        posicionActual.setToolTipText("Fila : Columna");
+
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jToolBar1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, GroupLayout.Alignment.TRAILING)
+                                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(posicionActual, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Mensajes, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jToolBar1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(posicionActual)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Mensajes, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                .addGap(26, 26, 26))
+        );
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>
+
+    private void openButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        //Show File Open dialogue here
+        int status = fileOpener.showOpenDialog(rootPane);
+        if (status == JFileChooser.APPROVE_OPTION)
+        {
+            if (currentEditingFile != null)
+            {
+                // A file is opened and is being edited. Open the new file in new window
+                App newWindow = new App(fileOpener.getSelectedFile());
+                newWindow.setVisible(true);
+                newWindow.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                newWindow.pack();
+                return;
+            }
+            currentEditingFile = fileOpener.getSelectedFile();
+            System.out.println("File chosen. File name = " + fileOpener.getSelectedFile().getName());
+            try
+            {
+                // Read the content of file
+                Scanner scn = new Scanner(new FileInputStream(currentEditingFile));
+                String buffer = "";
+                while (scn.hasNext()) {
+                    buffer += scn.nextLine() + "\n";
+                }
+                display.setText(buffer);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            System.out.println("No file selected");
+        }
+    }
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        //If we are editing a file opened, then we have to save the contents on the same file, currentEditingFile
+        if (currentEditingFile != null) {
+            try {
+                PrintWriter printWriter = new PrintWriter(currentEditingFile);
+                printWriter.write(display.getText());
+                printWriter.close();
+                JOptionPane.showMessageDialog(rootPane, "Saved to " + currentEditingFile.getName(), "Done", JOptionPane.INFORMATION_MESSAGE);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            int status = saveDialog.showOpenDialog(rootPane);
+            if (status == JFileChooser.APPROVE_OPTION)
+            {
+                //We got directory. Now needs file name
+                String fileName = JOptionPane.showInputDialog("File Name", "Untitled.txt");
+                if (!fileName.contains(".txt"))
+                {
+                    fileName += ".txt";
+                }
+                File f = new File(saveDialog.getSelectedFile() + "\\" + fileName);
+                if (f.exists())
+                {
+                    JOptionPane.showMessageDialog(rootPane, "File Already Exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                else
+                {
+                    try
+                    {
+                        f.createNewFile();
+                        PrintWriter printWriter = new PrintWriter(f);
+                        printWriter.write(display.getText());
+                        printWriter.close();
+                        JOptionPane.showMessageDialog(rootPane, "Saved", "Done", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    catch (IOException ex)
+                    {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane, "Error Occured", "Cant Save", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }
+
+
+
+    private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        try
+        {
+            erroresTXT.setText("");
+            mensajesTXT.setText("");
+            errors = new ownErrors();
+
+            input = new org.antlr.v4.runtime.ANTLRInputStream( new FileInputStream(currentEditingFile));
+            scanner = new ownScanner(input);
+            scanner.removeErrorListeners();
+            scanner.addErrorListener(errors);
+
+            tokens = new CommonTokenStream(scanner);
+            parser = new ownParser(tokens);
+            parser.removeErrorListeners();
+            parser.addErrorListener(errors);
+
+            tree = parser.program();
+            mensajesTXT.setText("Revision terminada");
+        }
+        catch(FileNotFoundException e)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Un error a ocurrido", "No se puede guardar", JOptionPane.ERROR_MESSAGE);
+        }
+        catch(ParseCancellationException e){
+            erroresTXT.setText(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void treeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if(!Objects.equals(tree, null))
+        {
+            treeGUI = org.antlr.v4.gui.Trees.inspect(tree,parser);
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "No se puede mostrar el árbol, debe compilar el programa primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+
+    private void  actualizarPosicionCursor(int linea,int columna)
+    {
+        posicionActual.setText("Lin: " + linea + " Col: " + columna);
+    }
+
+
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try
+        {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new App().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify
+    private JTabbedPane Mensajes;
+    private JTextArea display;
+    private JTextArea erroresTXT;
+    private JFileChooser fileOpener;
+    private JPanel jPanel1;
+    private JScrollPane jScrollPane1;
+    private JScrollPane jScrollPane2;
+    private JScrollPane jScrollPane4;
+    private JToolBar jToolBar1;
+    private JTextArea mensajesTXT;
+    private JButton openButton;
+    private JButton runButton;
+    private JButton saveButton;
+    private JButton treeButton;
+    private JFileChooser saveDialog;
+    private JLabel posicionActual;
+    // End of variables declaration
+}
