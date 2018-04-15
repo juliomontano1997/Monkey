@@ -2,6 +2,15 @@ package checker;
 
 import generated.ownParser;
 
+/*
+Data Types:
+-1 none
+0 neutral
+1 int
+2 string
+3 boolean
+ */
+
 public class Checker extends generated.ownParserBaseVisitor{
 
 

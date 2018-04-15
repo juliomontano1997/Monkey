@@ -368,6 +368,7 @@ public class App extends JFrame
                         printWriter.write(display.getText());
                         printWriter.close();
                         JOptionPane.showMessageDialog(rootPane, "Saved", "Done", JOptionPane.INFORMATION_MESSAGE);
+                        currentEditingFile = f;
                     }
                     catch (IOException ex)
                     {
