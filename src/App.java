@@ -47,7 +47,7 @@ public class App extends JFrame
                     public void windowClosing(WindowEvent e)
                     {
                         super.windowClosing(e);
-                        int ans = JOptionPane.showConfirmDialog(rootPane, "Save Changes ?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        int ans = JOptionPane.showConfirmDialog(rootPane, "Save Changes?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                         if (ans == JOptionPane.YES_OPTION)
                         {
                             saveChanges();
@@ -384,8 +384,6 @@ public class App extends JFrame
 
     }
 
-
-
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try
         {
@@ -404,15 +402,18 @@ public class App extends JFrame
             parser.addErrorListener(errors);
 
             tree = parser.program();
-            mensajesTXT.setText("Revision terminada");
+            mensajesTXT.setText("Completed review");
         }
-        catch(FileNotFoundException e)
-        {
-            JOptionPane.showMessageDialog(rootPane, "Un error a ocurrido", "No se puede guardar", JOptionPane.ERROR_MESSAGE);
+        catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(rootPane, "An error has occurred", "Can't save", JOptionPane.ERROR_MESSAGE);
         }
         catch(ParseCancellationException e){
             erroresTXT.setText(e.getMessage());
-        } catch (IOException e) {
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(rootPane, "\n" +
+                    "Select the code to compile", "Warning", JOptionPane.ERROR_MESSAGE);
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -423,14 +424,16 @@ public class App extends JFrame
             treeGUI = org.antlr.v4.gui.Trees.inspect(tree,parser);
         }
         else{
-            JOptionPane.showMessageDialog(rootPane, "No se puede mostrar el árbol, debe compilar el programa primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "\n" +
+                    "The tree can not be displayed, you must compile the program first", "\n" +
+                    "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
 
     private void  actualizarPosicionCursor(int linea,int columna)
     {
-        posicionActual.setText("Lin: " + linea + " Col: " + columna);
+        posicionActual.setText("Row: " + linea + " Column: " + columna);
     }
 
 

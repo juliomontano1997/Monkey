@@ -14,7 +14,7 @@ public class VariableSymbolsTable {
         int level;
         Token tok;
         int type;
-        String form;
+        String form; //var || (array - hashLiteral)
         ParserRuleContext decl;
 
         public Ident(int l, Token t, int ty, String f, ParserRuleContext d) {
