@@ -1,5 +1,6 @@
 parser grammar ownParser;
-options{
+options
+{
     tokenVocab = ownScanner;
 }
 
@@ -10,11 +11,8 @@ statement   	         : LET letStatement                                        
                          | expressionStatement                                     #StExprMonkey;
 
 letStatement   	         : ID ASSIGN expression ( PyCOMA | )                       #LetStMonkey;
-
 returnStatement	         : expression ( PyCOMA | )                                 #RtnStMonkey;
-
 expressionStatement 	 : expression ( PyCOMA | )                                 #ExprStMonkey;
-
 expression             	 : additionExpression comparison                           #ExprMonkey;
 
 comparison            	 : (MENOR additionExpression)*                             #CompMenMonkey

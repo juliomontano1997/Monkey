@@ -249,7 +249,7 @@ public class App extends JFrame
         Mensajes.addTab("Errores", jScrollPane2);
 
         posicionActual.setBackground(new java.awt.Color(255, 255, 255));
-        posicionActual.setText("O:0");
+        posicionActual.setText("Row:0,Col:0");
         posicionActual.setToolTipText("Fila : Columna");
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);

@@ -1,4 +1,4 @@
-// Generated from C:/Users/julio/Desktop/Monkey\ownScanner.g4 by ANTLR 4.7
+// Generated from C:/Users/julio/Desktop/ProyectoII/src\ownScanner.g4 by ANTLR 4.7
 package generated;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

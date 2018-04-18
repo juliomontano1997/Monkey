@@ -10,7 +10,8 @@ public class VariableSymbolsTable {
     private LinkedList<Ident> table;
     private int actualLevel;
 
-    public class Ident{
+    public class Ident
+    {
         int level;
         Token tok;
         int type;
@@ -24,7 +25,6 @@ public class VariableSymbolsTable {
             form = f;
             decl = d;
         }
-
         public String toString(){
             return this.tok.getText() + ", " + this.level;
         }
@@ -95,7 +95,6 @@ public class VariableSymbolsTable {
         else
             System.out.println("Empty table");
     }
-
     public LinkedList<Ident> getTable() {
         return this.table;
     }
