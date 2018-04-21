@@ -1,6 +1,8 @@
 package checker;
 
 import generated.ownParser;
+
+import java.util.ArrayList;
 /*
 Data Types:
 -1 none
@@ -14,6 +16,8 @@ public class Checker extends generated.ownParserBaseVisitor
 {
     VariableSymbolsTable variableSymbolsTable;
     MethodSymbolsTable methodSymbolsTable;
+    ArrayList<String> errors = new ArrayList(); //lista para almacenar los errores
+
     @Override
     public Object visitProgMonkey(ownParser.ProgMonkeyContext ctx)
     {
@@ -73,14 +77,14 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitExprMonkey(ownParser.ExprMonkeyContext ctx)
     {
-        int typeME; // Multiplication expression type
-        int typeAF; // Addition factor type
+        int typeAD; // Addition expression type
+        int typeC; // Comparison type
 
-        typeME = (int) visit(ctx.additionExpression());
-        typeAF = (int) visit(ctx.comparison());
-        if(typeME==typeAF)
+        typeAD = (int) visit(ctx.additionExpression());
+        typeC = (int) visit(ctx.comparison());
+        if(typeAD == typeC)
         {
-            return typeAF;
+            return typeC;
         }
         else
         {
@@ -91,87 +95,264 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitCompMenMonkey(ownParser.CompMenMonkeyContext ctx)
     {
-        return super.visitCompMenMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.additionExpression(0));
+        for (int i=0; i<= ctx.additionExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.additionExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitCompMayMonkey(ownParser.CompMayMonkeyContext ctx)
     {
-        return super.visitCompMayMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.additionExpression(0));
+        for (int i=0; i<= ctx.additionExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.additionExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitCompMeIMonkey(ownParser.CompMeIMonkeyContext ctx)
     {
-        return super.visitCompMeIMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.additionExpression(0));
+        for (int i=0; i<= ctx.additionExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.additionExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitCompMaIMonkey(ownParser.CompMaIMonkeyContext ctx)
     {
-        return super.visitCompMaIMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.additionExpression(0));
+        for (int i=0; i<= ctx.additionExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.additionExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitCompIgMonkey(ownParser.CompIgMonkeyContext ctx)
     {
-        return super.visitCompIgMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.additionExpression(0));
+        for (int i=0; i<= ctx.additionExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.additionExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
-
-
 
     @Override
     public Object visitAddExprMonkey(ownParser.AddExprMonkeyContext ctx)
     {
-        return super.visitAddExprMonkey(ctx);
+        int typeME; // Multiplication expression type
+        int typeAF; // Addition factor type
+
+        typeME = (int) visit(ctx.multiplicationExpression());
+        typeAF = (int) visit(ctx.additionFactor());
+        if(typeME == typeAF)
+        {
+            return typeAF;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
     @Override
     public Object visitAddFSumMonkey(ownParser.AddFSumMonkeyContext ctx)
     {
-        return super.visitAddFSumMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.multiplicationExpression(0));
+        for (int i=0; i<= ctx.multiplicationExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.multiplicationExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitAddFSubMonkey(ownParser.AddFSubMonkeyContext ctx)
     {
-        return super.visitAddFSubMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.multiplicationExpression(0));
+        for (int i=0; i<= ctx.multiplicationExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.multiplicationExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitMulExprMonkey(ownParser.MulExprMonkeyContext ctx)
     {
-        return super.visitMulExprMonkey(ctx);
+        int typeEE; // Element expression type
+        int typeMF; // Multiplication factor type
+
+        typeEE = (int) visit(ctx.elementExpression());
+        typeMF = (int) visit(ctx.multiplicationFactor());
+        if(typeEE == typeMF)
+        {
+            return typeMF;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
     @Override
     public Object visitMulFMulMonkey(ownParser.MulFMulMonkeyContext ctx)
     {
-        return super.visitMulFMulMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.elementExpression(0));
+        for (int i=0; i<= ctx.elementExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.elementExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitMulFDivMonkey(ownParser.MulFDivMonkeyContext ctx)
     {
-        return super.visitMulFDivMonkey(ctx);
+        int t1 = -1;
+        int t2 = -1;
+        t1 = (Integer) visit(ctx.elementExpression(0));
+        for (int i=0; i<= ctx.elementExpression().size()-1; i++) {
+            t2 = (Integer) visit(ctx.elementExpression(i + 1));
+            if(t1 == -1 || t2 == -1 || t1 == 2 || t2 == 2 || t1 == 3 || t2 == 3)
+            {
+                //falta hacer el error
+                return -1;
+            }
+            else if (t1 != t2) {
+
+                return -1;
+            }
+            t1 = t2;
+        }
+        return t1;
     }
 
     @Override
     public Object visitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx)
     {
-        return super.visitElemExprMonkey(ctx);
+        ctx.primitiveExpression();
+        if(ctx.children.equals(ownParser.ElementAccessContext.class))
+        {
+            ctx.elementAccess();
+        }
+        else if(ctx.children.equals(ownParser.CallExpressionContext.class))
+        {
+            ctx.callExpression();
+        }
+        return null;
     }
 
     @Override
     public Object visitElemAcsMonkey(ownParser.ElemAcsMonkeyContext ctx)
     {
-        return super.visitElemAcsMonkey(ctx);
+        ctx.expression();
+        return null;
     }
 
     @Override
     public Object visitCallExprMonkey(ownParser.CallExprMonkeyContext ctx)
     {
-        return super.visitCallExprMonkey(ctx);
+        ctx.expressionList();
+        return null;
     }
 
     @Override
@@ -189,8 +370,15 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx)
     {
-        // Buscar id en la tabla y retornar el tipo
-        return super.visitPrimExprIdMonkey(ctx);
+        VariableSymbolsTable.Ident i;
+        if ((i = this.variableSymbolsTable.search(ctx.ID().getText())) != null) {
+            return i.type;
+        }/*
+        else if((i = this.methodSymbolsTable.search(ctx.ID().getText())) != null))
+        {
+
+        }*///si es un metodo?
+        return -1;
     }
 
     @Override

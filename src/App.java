@@ -1,3 +1,4 @@
+import checker.Checker;
 import generated.ownErrors;
 import generated.ownParser;
 import generated.ownScanner;
@@ -25,6 +26,7 @@ public class App extends JFrame
     int fontSize = 14;
     ownScanner scanner = null;
     ownParser parser = null;
+    Checker checker = null;
     ownErrors errors = null;
     ParseTree tree = null;
     java.util.concurrent.Future <JFrame> treeGUI = null;
@@ -402,6 +404,7 @@ public class App extends JFrame
             parser.addErrorListener(errors);
 
             tree = parser.program();
+            //checker = new Checker();
             mensajesTXT.setText("Completed review");
         }
         catch(FileNotFoundException e){

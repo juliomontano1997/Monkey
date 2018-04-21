@@ -25,6 +25,7 @@ public class VariableSymbolsTable {
             form = f;
             decl = d;
         }
+
         public String toString(){
             return this.tok.getText() + ", " + this.level;
         }
