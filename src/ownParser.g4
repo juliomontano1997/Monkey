@@ -46,7 +46,7 @@ multiplicationFactor	 : (MUL elementExpression)*                                
 
 
 
-elementExpression 	     : primitiveExpression (elementAccess|callExpression| )     #ElemExprMonkey;
+elementExpression 	     : primitiveExpression ((elementAccess|callExpression)*| ) #ElemExprMonkey;
 
 elementAccess       	 : CIZQ expression CDER                                    #ElemAcsMonkey;
 
@@ -88,7 +88,7 @@ hashContent	             : expression DOSPUN expression                         
 
 moreHashContent	         : (COMA hashContent)*                                     #MreHshCntMonkey;
 
-expressionList       	 : expression (COMA expression)*                           #ExprLstMonkey;
+expressionList       	 : (expression (COMA expression)*| )                       #ExprLstMonkey;
 
 printExpression      	 : PUTS PIZQ expression PDER                               #PrtExprMonkey;
 

@@ -26,6 +26,7 @@ public class Checker extends generated.ownParserBaseVisitor
     private static final int ARRAY_FUNCTIONS = 7;
 
 
+
     private List<ANTLRErrorListener> _listeners = new CopyOnWriteArrayList<ANTLRErrorListener>() {
         {
             this.add(ConsoleErrorListener.INSTANCE);
@@ -134,6 +135,7 @@ public class Checker extends generated.ownParserBaseVisitor
     public Object visitExprMonkey(ownParser.ExprMonkeyContext ctx) {
         int typeAddExp = (int) visit(ctx.additionExpression());
         //DUDE  ¿Que pasa si en ctx.comparison() no hay nada?, ¿Que hace por debajo el sistema tira algun error?
+        // hay que hacer un if para ver si el comparison esta nulo
         int typeComp = (int) visit(ctx.comparison());
         if(typeAddExp==typeComp || typeComp==NEUTRAL || typeComp==NONE)
         {
@@ -516,31 +518,31 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitArrFLenMonkey(ownParser.ArrFLenMonkeyContext ctx) {
         //DUDE ¿Que devuelvo, que el retorno es un entero o una funcion?
-        return ARRAY_FUNCTIONS;
+        return INT;
     }
 
     @Override
     public Object visitArrFFirMonkey(ownParser.ArrFFirMonkeyContext ctx) {
         //DUDE ¿Que devuelvo, que el retorno es un entero o una funcion?
-        return ARRAY_FUNCTIONS;
+        return NEUTRAL;
     }
 
     @Override
     public Object visitArrFLstMonkey(ownParser.ArrFLstMonkeyContext ctx) {
         //DUDE ¿Que devuelvo, que el retorno es un entero o una funcion?
-        return ARRAY_FUNCTIONS;
+        return NEUTRAL;
     }
 
     @Override
     public Object visitArrFRstMonkey(ownParser.ArrFRstMonkeyContext ctx) {
         //DUDE ¿Que devuelvo, que el retorno es un entero o una funcion?
-        return ARRAY_FUNCTIONS;
+        return ARRAY;
     }
 
     @Override
     public Object visitArrFPshMonkey(ownParser.ArrFPshMonkeyContext ctx) {
         //DUDE ¿Que devuelvo, que el retorno es un entero o una funcion?
-        return ARRAY_FUNCTIONS;
+        return NONE;
     }
 
 
