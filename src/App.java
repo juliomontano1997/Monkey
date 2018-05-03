@@ -332,8 +332,8 @@ public class App extends JFrame
             System.out.println("No file selected");
         }
     }
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private  void saveArchive()
+    {
         //If we are editing a file opened, then we have to save the contents on the same file, currentEditingFile
         if (currentEditingFile != null) {
             try {
@@ -383,12 +383,17 @@ public class App extends JFrame
                 JOptionPane.showMessageDialog(rootPane, "Error Occured", "Cant Save", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        saveArchive();
     }
 
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try
         {
+            saveArchive();
             erroresTXT.setText("");
             mensajesTXT.setText("");
             errors = new ownErrors();
@@ -404,19 +409,28 @@ public class App extends JFrame
             parser.addErrorListener(errors);
 
             tree = parser.program();
-            //checker = new Checker();
+            checker = new Checker();
+            //checker.addErrorListener(errors);
+            //checker.visit(tree);
             mensajesTXT.setText("Completed review");
         }
-        catch(FileNotFoundException e){
+        catch(FileNotFoundException e)
+        {
             JOptionPane.showMessageDialog(rootPane, "An error has occurred", "Can't save", JOptionPane.ERROR_MESSAGE);
         }
-        catch(ParseCancellationException e){
-            erroresTXT.setText(e.getMessage());
-        } catch(NullPointerException e){
+        catch(ParseCancellationException e)
+        {
+            String errs  = erroresTXT.getText();
+            erroresTXT.setText(errs+"\n"+e.getMessage());
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println(e.toString());
             JOptionPane.showMessageDialog(rootPane, "\n" +
                     "Select the code to compile", "Warning", JOptionPane.ERROR_MESSAGE);
         }
-        catch (IOException e) {
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
@@ -433,13 +447,10 @@ public class App extends JFrame
         }
     }
 
-
     private void  actualizarPosicionCursor(int linea,int columna)
     {
-        posicionActual.setText("Row: " + linea + " Column: " + columna);
+        posicionActual.setText("Row: " + linea + " Col: " + columna);
     }
-
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

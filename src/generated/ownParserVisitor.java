@@ -305,13 +305,6 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunPrmtMonket(ownParser.FunPrmtMonketContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code MreIdentMonkey}
-	 * labeled alternative in {@link ownParser#moreIdentifiers}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMreIdentMonkey(ownParser.MreIdentMonkeyContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code HshLtlMonkey}
 	 * labeled alternative in {@link ownParser#hashLiteral}.
 	 * @param ctx the parse tree
@@ -333,26 +326,12 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMreHshCntMonkey(ownParser.MreHshCntMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ExprLstMreMonkey}
-	 * labeled alternative in {@link ownParser#expressionList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExprLstMreMonkey(ownParser.ExprLstMreMonkeyContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code ExprLstMonkey}
 	 * labeled alternative in {@link ownParser#expressionList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitExprLstMonkey(ownParser.ExprLstMonkeyContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code MreExprMonkey}
-	 * labeled alternative in {@link ownParser#moreExpressions}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMreExprMonkey(ownParser.MreExprMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code PrtExprMonkey}
 	 * labeled alternative in {@link ownParser#printExpression}.

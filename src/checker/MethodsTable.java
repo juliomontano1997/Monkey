@@ -5,46 +5,47 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import java.util.LinkedList;
 
-public class MethodSymbolsTable {
+public class MethodsTable {
 
-    private LinkedList<MethodSymbolsTable.Ident> table;
+    private LinkedList<MethodsTable.Element> table;
     private int actualLevel;
 
-    public class Ident{
+    public class Element{
         int level;
-        Token tok;
+        Token token;
         int numberParams;
         LinkedList<Integer> paramsType;
         int returnType;
-        ParserRuleContext decl;
+        ParserRuleContext context;
 
-        public Ident(int l, Token t, int nP, LinkedList<Integer> pT, int rT, ParserRuleContext d) {
-            level = l;
-            tok = t;
-            numberParams = nP;
-            paramsType = pT;
-            returnType = rT;
-            decl = d;
+        public Element(int level, Token token, int numberParams, LinkedList<Integer> paramsType, int returnType, ParserRuleContext context) {
+            this.level = level;
+            this.token = token;
+            this.numberParams = numberParams;
+            this.paramsType = paramsType;
+            this.returnType = returnType;
+            this.context = context;
         }
 
         public String toString(){
-            return this.tok.getText() + ", " + this.numberParams + ", " + this.paramsType.toString() + ", "+ this.returnType + ", " +this.level;
+            return this.token.getText() + ", " + this.numberParams + ", " + this.paramsType.toString() + ", "+ this.returnType + ", " +this.level;
         }
     }
 
-    public MethodSymbolsTable()
+    public MethodsTable()
     {
+        this.table = new LinkedList<>();
         this.actualLevel = 0;
-        this.table = new LinkedList<MethodSymbolsTable.Ident>();
     }
 
-    public MethodSymbolsTable.Ident insert(String n, int nP, LinkedList<Integer> pT, int rT, ParserRuleContext d)
+
+    public MethodsTable.Element insert(String n, int nP, LinkedList<Integer> pT, int rT, ParserRuleContext d)
     {
         Token tk = new CommonToken(0,n);
-        MethodSymbolsTable.Ident i = new MethodSymbolsTable.Ident(actualLevel,tk,nP,pT,rT,d);
+        MethodsTable.Element i = new MethodsTable.Element(actualLevel,tk,nP,pT,rT,d);
         int j = 0;
         while (j < this.table.size() && this.table.get(j).level == actualLevel) {
-            if (this.table.get(j).tok.getText().equals(n) && this.table.get(j).numberParams == nP && this.table.get(j).returnType == rT && this.table.get(j).paramsType == pT) {
+            if (this.table.get(j).token.getText().equals(n) && this.table.get(j).numberParams == nP && this.table.get(j).returnType == rT && this.table.get(j).paramsType == pT) {
                 System.out.println("Function \"" + n + "\" already exist!!!");
                 return null;
             }
@@ -59,7 +60,7 @@ public class MethodSymbolsTable {
     }
 
     public void closeScope(){
-        MethodSymbolsTable.Ident element = this.table.get(0);
+        MethodsTable.Element element = this.table.get(0);
         while (element != null && element.level == actualLevel){
             table.pop();
             if(!this.table.isEmpty())
@@ -70,11 +71,11 @@ public class MethodSymbolsTable {
         this.actualLevel--;
     }
 
-    public MethodSymbolsTable.Ident search(String name, int amountParams, LinkedList<Integer> paramsType ,int returnType)
+    public MethodsTable.Element search(String name, int amountParams, LinkedList<Integer> paramsType ,int returnType)
     {
-        MethodSymbolsTable.Ident temp = null;
-        for(MethodSymbolsTable.Ident id : this.table)
-            if (id.tok.getText().equals(name) && id.numberParams == amountParams && id.returnType == returnType && id.paramsType == paramsType) {
+        MethodsTable.Element temp = null;
+        for(MethodsTable.Element id : this.table)
+            if (id.token.getText().equals(name) && id.numberParams == amountParams && id.returnType == returnType && id.paramsType == paramsType) {
                 temp = id;
                 break;
             }
@@ -84,12 +85,12 @@ public class MethodSymbolsTable {
     public void print() {
         System.out.println("****** SYMBOLS TABLE STATE ******");
         if (!this.table.isEmpty()) {
-            for (MethodSymbolsTable.Ident i : this.table) {
+            for (MethodsTable.Element i : this.table) {
                 String nivel = "";
                 for (int j = 0; j < i.level; j++) {
                     nivel += "\t";
                 }
-                System.out.println(nivel + "Name: " + i.tok.getText() + ", "
+                System.out.println(nivel + "Name: " + i.token.getText() + ", "
                                          + "Number of parameters: " + i.numberParams + ", "
                                          + "Parameters type: " + i.paramsType.toString() + ", "
                                          + "Return type: " + i.returnType + ", "
@@ -101,8 +102,12 @@ public class MethodSymbolsTable {
             System.out.println("Empty table");
     }
 
-    public LinkedList<MethodSymbolsTable.Ident> getTable() {
+    public LinkedList<MethodsTable.Element> getTable() {
         return this.table;
     }
+
+
+
+
 
 }

@@ -512,18 +512,6 @@ public interface ownParserListener extends ParseTreeListener {
 	 */
 	void exitFunPrmtMonket(ownParser.FunPrmtMonketContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code MreIdentMonkey}
-	 * labeled alternative in {@link ownParser#moreIdentifiers}.
-	 * @param ctx the parse tree
-	 */
-	void enterMreIdentMonkey(ownParser.MreIdentMonkeyContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code MreIdentMonkey}
-	 * labeled alternative in {@link ownParser#moreIdentifiers}.
-	 * @param ctx the parse tree
-	 */
-	void exitMreIdentMonkey(ownParser.MreIdentMonkeyContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code HshLtlMonkey}
 	 * labeled alternative in {@link ownParser#hashLiteral}.
 	 * @param ctx the parse tree
@@ -560,18 +548,6 @@ public interface ownParserListener extends ParseTreeListener {
 	 */
 	void exitMreHshCntMonkey(ownParser.MreHshCntMonkeyContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ExprLstMreMonkey}
-	 * labeled alternative in {@link ownParser#expressionList}.
-	 * @param ctx the parse tree
-	 */
-	void enterExprLstMreMonkey(ownParser.ExprLstMreMonkeyContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ExprLstMreMonkey}
-	 * labeled alternative in {@link ownParser#expressionList}.
-	 * @param ctx the parse tree
-	 */
-	void exitExprLstMreMonkey(ownParser.ExprLstMreMonkeyContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code ExprLstMonkey}
 	 * labeled alternative in {@link ownParser#expressionList}.
 	 * @param ctx the parse tree
@@ -583,18 +559,6 @@ public interface ownParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExprLstMonkey(ownParser.ExprLstMonkeyContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code MreExprMonkey}
-	 * labeled alternative in {@link ownParser#moreExpressions}.
-	 * @param ctx the parse tree
-	 */
-	void enterMreExprMonkey(ownParser.MreExprMonkeyContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code MreExprMonkey}
-	 * labeled alternative in {@link ownParser#moreExpressions}.
-	 * @param ctx the parse tree
-	 */
-	void exitMreExprMonkey(ownParser.MreExprMonkeyContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code PrtExprMonkey}
 	 * labeled alternative in {@link ownParser#printExpression}.
