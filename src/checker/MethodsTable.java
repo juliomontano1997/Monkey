@@ -14,21 +14,19 @@ public class MethodsTable {
         int level;
         Token token;
         int numberParams;
-        LinkedList<Integer> paramsType;
         int returnType;
         ParserRuleContext context;
 
-        public Element(int level, Token token, int numberParams, LinkedList<Integer> paramsType, int returnType, ParserRuleContext context) {
+        public Element(int level, Token token, int numberParams, int returnType, ParserRuleContext context) {
             this.level = level;
             this.token = token;
             this.numberParams = numberParams;
-            this.paramsType = paramsType;
             this.returnType = returnType;
             this.context = context;
         }
 
         public String toString(){
-            return this.token.getText() + ", " + this.numberParams + ", " + this.paramsType.toString() + ", "+ this.returnType + ", " +this.level;
+            return this.token.getText() + ", " + this.numberParams + ", "+ this.returnType + ", " +this.level;
         }
     }
 
@@ -39,13 +37,13 @@ public class MethodsTable {
     }
 
 
-    public MethodsTable.Element insert(String n, int nP, LinkedList<Integer> pT, int rT, ParserRuleContext d)
+    public MethodsTable.Element insert(String n, int nP, int rT, ParserRuleContext d)
     {
         Token tk = new CommonToken(0,n);
-        MethodsTable.Element i = new MethodsTable.Element(actualLevel,tk,nP,pT,rT,d);
+        MethodsTable.Element i = new MethodsTable.Element(actualLevel,tk,nP,rT,d);
         int j = 0;
         while (j < this.table.size() && this.table.get(j).level == actualLevel) {
-            if (this.table.get(j).token.getText().equals(n) && this.table.get(j).numberParams == nP && this.table.get(j).returnType == rT && this.table.get(j).paramsType == pT) {
+            if (this.table.get(j).token.getText().equals(n) && this.table.get(j).numberParams == nP && this.table.get(j).returnType == rT) {
                 System.out.println("Function \"" + n + "\" already exist!!!");
                 return null;
             }
@@ -71,11 +69,11 @@ public class MethodsTable {
         this.actualLevel--;
     }
 
-    public MethodsTable.Element search(String name, int amountParams, LinkedList<Integer> paramsType ,int returnType)
+    public MethodsTable.Element search(String name, int amountParams, int returnType)
     {
         MethodsTable.Element temp = null;
         for(MethodsTable.Element id : this.table)
-            if (id.token.getText().equals(name) && id.numberParams == amountParams && id.returnType == returnType && id.paramsType == paramsType) {
+            if (id.token.getText().equals(name) && id.numberParams == amountParams && id.returnType == returnType) {
                 temp = id;
                 break;
             }
@@ -92,7 +90,6 @@ public class MethodsTable {
                 }
                 System.out.println(nivel + "Name: " + i.token.getText() + ", "
                                          + "Number of parameters: " + i.numberParams + ", "
-                                         + "Parameters type: " + i.paramsType.toString() + ", "
                                          + "Return type: " + i.returnType + ", "
                                          + "Level: " + i.level);
             }

@@ -361,49 +361,57 @@ public class Checker extends generated.ownParserBaseVisitor
         //DUDE ¿Esto funciona? : hay que asegurarse que esto funcione
         if(ctx.children.equals(ownParser.ElementAccessContext.class))
         {
-            int typeElemAcs = (int)visit(ctx.elementAccess());
-            if(typePrim == ARRAY)
+            for(ownParser.ElementAccessContext element : ctx.elementAccess())
             {
-                if (typeElemAcs!=INT)
+                int typeElemAcs = (int)visit(element);
+                if(typePrim == ARRAY)
+                {
+                    if (typeElemAcs!=INT)
+                    {
+                        //ERROR
+                        System.out.println("Error accesando al array el tipo dado no es int");
+                        return NONE;
+                    }
+                    else {
+                        return NEUTRAL;
+                    }
+                }
+                else if(typePrim == HASH_LITERAL)
+                {
+                    if(typeElemAcs!=INT && typeElemAcs!= STRING)
+                    {
+                        // ERROR
+                        System.out.println("Error accesando al diccionario el tipo dado no es int ni tampoco String");
+                        return NONE;
+                    }
+                    else {
+                        return NEUTRAL;
+                    }
+                }
+                else
                 {
                     //ERROR
-                    System.out.println("Error accesando al array el tipo dado no es int");
                     return NONE;
                 }
-                else {
-                    return NEUTRAL;
-                }
             }
-            else if(typePrim == HASH_LITERAL)
-            {
-                if(typeElemAcs!=INT && typeElemAcs!= STRING)
-                {
-                    // ERROR
-                    System.out.println("Error accesando al diccionario el tipo dado no es int ni tampoco String");
-                    return NONE;
-                }
-                else {
-                    return NEUTRAL;
-                }
-            }
-            else
-            {
-                //ERROR
-                return NONE;
-            }
+
         }
         else if(ctx.children.equals(ownParser.CallExpressionContext.class))
         {
-            int type = (int)visit(ctx.callExpression());
-            if(typePrim != FUNCTION)
-            {
-                //ERROR
-                System.out.println("Error esto no es una funcion");
-                return NONE;
-            }
-            else{
-                //DUDE
-                return NEUTRAL;
+            for (ownParser.CallExpressionContext element : ctx.callExpression()) {
+                int type = (int)visit(element);
+
+                if(typePrim != FUNCTION)
+                {
+                    //ERROR
+                    System.out.println("Error esto no es una funcion");
+                    return NONE;
+                }
+                else
+                {
+                    //DUDE
+                    return NEUTRAL;
+                }
             }
         }
 
@@ -561,19 +569,25 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitFunLtlMonkey(ownParser.FunLtlMonkeyContext ctx){
         //DUDE ¿Que retorno?
+        variablesTable.openScope();
+        methodsTable.openScope();
         int type1 = (int) visit(ctx.functionParameters());
         int type2 = (int) visit(ctx.blockStatement());
+        variablesTable.closeScope();
+        methodsTable.closeScope();
         return FUNCTION;
     }
+
 
     @Override
     public Object visitFunPrmtMonket(ownParser.FunPrmtMonketContext ctx) {
         int typeID;
+
         for (TerminalNode element: ctx.ID()){
             typeID = (int)visit(element);
             if(typeID == NONE)
             {
-                //ERROR
+                //ERROR :
                 //DUDE
                 System.out.println("Ocurrio un error verificando los parametros");
                 return NONE;
@@ -582,11 +596,6 @@ public class Checker extends generated.ownParserBaseVisitor
         //ACEPTED
         return NONE;
     }
-
-
-
-
-
 
 
     @Override
