@@ -410,7 +410,7 @@ public class App extends JFrame
 
             tree = parser.program();
             checker = new Checker();
-            //checker.addErrorListener(errors);
+            checker.addErrorListener(errors);
             //checker.visit(tree);
             mensajesTXT.setText("Completed review");
         }

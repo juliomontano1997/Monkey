@@ -244,13 +244,37 @@ public class ownParserBaseListener implements ownParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElemExprMonkey(ownParser.ElemExprMonkeyContext ctx) { }
+	@Override public void enterElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx) { }
+	@Override public void exitElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

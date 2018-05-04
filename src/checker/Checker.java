@@ -24,6 +24,7 @@ public class Checker extends generated.ownParserBaseVisitor
     private static final int HASH_LITERAL = 5;
     private static final int FUNCTION = 6;
     private static final int ARRAY_FUNCTIONS = 7;
+    private int paramsNumber = 0;
 
 
 
@@ -56,15 +57,14 @@ public class Checker extends generated.ownParserBaseVisitor
 
 
     @Override
-    public Object visitProgMonkey(ownParser.ProgMonkeyContext ctx) {
+    public Object visitProgMonkey(ownParser.ProgMonkeyContext ctx)
+    {
         for(ownParser.StatementContext element : ctx.statement())
         {
             visit(element);
         }
         return NONE;
     }
-
-
 
     @Override
     public Object visitStLetMonkey(ownParser.StLetMonkeyContext ctx) {
@@ -91,6 +91,7 @@ public class Checker extends generated.ownParserBaseVisitor
     public Object visitLetStMonkey(ownParser.LetStMonkeyContext ctx) {
         // Falta verificar si el nombre de la variable o el metodo ya existen en la tabla contraria.
         int type = (int)visit(ctx.expression());
+
         if(type!= NONE && type!= FUNCTION){
             Object response = variablesTable.insert(ctx.ID().getText(), type, ctx);
             if(response!= null){
@@ -103,13 +104,16 @@ public class Checker extends generated.ownParserBaseVisitor
             }
         }
         else if (type== FUNCTION){
-            Object response = variablesTable.insert(ctx.ID().getText(), type, ctx);
+            MethodsTable.Element response = methodsTable.insert(ctx.ID().getText(), type, NEUTRAL, ctx);
             if(response!= null){
+                response.setNumberParams(paramsNumber);
+                paramsNumber = 0;
                 return NONE;
             }
             else {
                 System.out.println("Ocurrio un error en la insercion del metodo");
                 //ERROR
+                paramsNumber = 0;
                 return NONE;
             }
         }
@@ -131,41 +135,45 @@ public class Checker extends generated.ownParserBaseVisitor
     }
 
 
+
+
     @Override
     public Object visitExprMonkey(ownParser.ExprMonkeyContext ctx) {
         int typeAddExp = (int) visit(ctx.additionExpression());
-        //DUDE  ¿Que pasa si en ctx.comparison() no hay nada?, ¿Que hace por debajo el sistema tira algun error?
-        // hay que hacer un if para ver si el comparison esta nulo
-        int typeComp = (int) visit(ctx.comparison());
-        if(typeAddExp==typeComp || typeComp==NEUTRAL || typeComp==NONE)
+        int typeComp=NEUTRAL;
+
+        if(ctx.children.equals(ownParser.ComparisonContext.class))
+        {
+            typeComp= (int) visit(ctx.comparison());
+        }
+        if(typeAddExp==typeComp || typeComp==NEUTRAL)
         {
             return typeAddExp;
         }
-        else {
-            //Error
+        else
+        {   //ERROR
             System.out.println("Ocurrió un error en la comparacion");
             return NONE;
         }
     }
 
     @Override
-    public Object visitCompMenMonkey(ownParser.CompMenMonkeyContext ctx){
+    public Object visitCompMenMonkey(ownParser.CompMenMonkeyContext ctx)
+    {
         int type1 = (Integer) visit(ctx.additionExpression(0));
-        int type2;
+        int type2= NEUTRAL;
+
+
         for (ownParser.AdditionExpressionContext element: ctx.additionExpression()) {
             type2 = (Integer) visit(element);
-            if(type1 == NONE || type2 == NONE || type1 == STRING|| type2 == STRING || type1 == BOOLEAN  || type2 == BOOLEAN) {
-                //ERROR
-                System.out.println("Error en la comparacion: tipos inoperables");
-                return NONE;
-            }
-            else if (type1 != type2){
-                //ERROR
-                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
-                return NONE;
+
+            if ((type1== NEUTRAL || type1==INT)&& (type2==NEUTRAL|| type2 == INT))
+            {
+                type1=BOOLEAN;
             }
             else {
-                type1 = type2;
+                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
+                return NONE;
             }
         }
         return type1;
@@ -174,21 +182,19 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitCompMayMonkey(ownParser.CompMayMonkeyContext ctx) {
         int type1 = (Integer) visit(ctx.additionExpression(0));
-        int type2;
+        int type2= NEUTRAL;
+
+
         for (ownParser.AdditionExpressionContext element: ctx.additionExpression()) {
             type2 = (Integer) visit(element);
-            if(type1 == NONE || type2 == NONE || type1 == STRING|| type2 == STRING || type1 == BOOLEAN  || type2 == BOOLEAN) {
-                //ERROR
-                System.out.println("Error en la comparacion: tipos inoperables");
-                return NONE;
-            }
-            else if (type1 != type2){
-                //ERROR
-                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
-                return NONE;
+
+            if ((type1== NEUTRAL || type1==INT)&& (type2==NEUTRAL|| type2 == INT))
+            {
+                type1=BOOLEAN;
             }
             else {
-                type1 = type2;
+                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
+                return NONE;
             }
         }
         return type1;
@@ -197,21 +203,19 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitCompMeIMonkey(ownParser.CompMeIMonkeyContext ctx) {
         int type1 = (Integer) visit(ctx.additionExpression(0));
-        int type2;
+        int type2= NEUTRAL;
+
+
         for (ownParser.AdditionExpressionContext element: ctx.additionExpression()) {
             type2 = (Integer) visit(element);
-            if(type1 == NONE || type2 == NONE || type1 == STRING|| type2 == STRING || type1 == BOOLEAN  || type2 == BOOLEAN) {
-                //ERROR
-                System.out.println("Error en la comparacion: tipos inoperables");
-                return NONE;
-            }
-            else if (type1 != type2){
-                //ERROR
-                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
-                return NONE;
+
+            if ((type1== NEUTRAL || type1==INT)&& (type2==NEUTRAL|| type2 == INT))
+            {
+                type1=BOOLEAN;
             }
             else {
-                type1 = type2;
+                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
+                return NONE;
             }
         }
         return type1;
@@ -220,21 +224,19 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitCompMaIMonkey(ownParser.CompMaIMonkeyContext ctx) {
         int type1 = (Integer) visit(ctx.additionExpression(0));
-        int type2;
+        int type2= NEUTRAL;
+
+
         for (ownParser.AdditionExpressionContext element: ctx.additionExpression()) {
             type2 = (Integer) visit(element);
-            if(type1 == NONE || type2 == NONE || type1 == STRING|| type2 == STRING || type1 == BOOLEAN  || type2 == BOOLEAN) {
-                //ERROR
-                System.out.println("Error en la comparacion: tipos inoperables");
-                return NONE;
-            }
-            else if (type1 != type2){
-                //ERROR
-                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
-                return NONE;
+
+            if ((type1== NEUTRAL || type1==INT)&& (type2==NEUTRAL|| type2 == INT))
+            {
+                type1=BOOLEAN;
             }
             else {
-                type1 = type2;
+                System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
+                return NONE;
             }
         }
         return type1;
@@ -244,20 +246,19 @@ public class Checker extends generated.ownParserBaseVisitor
     public Object visitCompIgMonkey(ownParser.CompIgMonkeyContext ctx) {
         int type1 = (Integer) visit(ctx.additionExpression(0));
         int type2;
+
         for (ownParser.AdditionExpressionContext element: ctx.additionExpression()) {
             type2 = (Integer) visit(element);
-            if(type1 == NONE || type2 == NONE || type1 == STRING|| type2 == STRING || type1 == BOOLEAN  || type2 == BOOLEAN) {
-                //ERROR
-                System.out.println("Error en la comparacion: tipos inoperables");
-                return NONE;
+            if (((type1==NEUTRAL)&& (type2!=NONE)) || (type2==NEUTRAL)&& (type1!=NONE)){
+                type1=BOOLEAN;
             }
-            else if (type1 != type2){
+            else if((type1==type2)&&((type1!= NONE))){
+                type1=BOOLEAN;
+            }
+            else {
                 //ERROR
                 System.out.println("Error en la comparacion: los tipos son incompatibles entre si");
                 return NONE;
-            }
-            else {
-                type1 = type2;
             }
         }
         return type1;
@@ -266,9 +267,13 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitAddExprMonkey(ownParser.AddExprMonkeyContext ctx) {
         int typeAddExp = (int) visit(ctx.multiplicationExpression());
-        //DUDE : ¿Que pasa cuando no existe addition factor?; porque por lo visto tambien lo debe aceptar cuando no viene nada
-        int typeComp = (int) visit(ctx.additionFactor());
-        if(typeAddExp==typeComp || typeComp==NEUTRAL || typeComp==NONE)
+        int typeComp = NEUTRAL;
+        if(ctx.children.equals(ownParser.AdditionFactorContext.class))
+        {
+            typeComp = (int) visit(ctx.additionFactor());
+        }
+
+        if ((typeAddExp== NEUTRAL || typeAddExp==INT)&& (typeComp==NEUTRAL|| typeComp == INT))
         {
             return typeAddExp;
         }
@@ -284,7 +289,8 @@ public class Checker extends generated.ownParserBaseVisitor
         int type=NONE;
         for (ownParser.MultiplicationExpressionContext element: ctx.multiplicationExpression()){
             type = (int) visit(element);
-            if(type!= INT)
+            //REVISAR
+            if(type != INT && type!= NEUTRAL)
             {
                 //ERROR
                 System.out.println("Ocurrió un error en la expression");
@@ -299,7 +305,8 @@ public class Checker extends generated.ownParserBaseVisitor
         int type=NONE;
         for (ownParser.MultiplicationExpressionContext element: ctx.multiplicationExpression()){
             type = (int) visit(element);
-            if(type!= INT)
+            //REVISAR
+            if(type != INT && type != NEUTRAL)
             {
                 //ERROR
                 System.out.println("Ocurrió un error en la expression");
@@ -309,18 +316,28 @@ public class Checker extends generated.ownParserBaseVisitor
         return type;
     }
 
+
+
     @Override
     public Object visitMulExprMonkey(ownParser.MulExprMonkeyContext ctx) {
         int typeElemtExp = (int)visit(ctx.elementExpression());
-        int typemultFact = (int)visit(ctx.multiplicationFactor());
-        if(typeElemtExp==typemultFact || typemultFact==NEUTRAL || typemultFact==NONE){
-            return typeElemtExp;
+        int typemultFact = NEUTRAL;
+        if(ctx.children.equals(ownParser.MultiplicationFactorContext.class))
+        {
+            typemultFact = (int)visit(ctx.multiplicationFactor());
+            if ((typeElemtExp== NEUTRAL || typeElemtExp==INT)&& (typemultFact==NEUTRAL|| typemultFact == INT))
+            {
+                return typeElemtExp;
+            }
+            else
+                {
+                //Error
+                System.out.println("Ocurrió un error en la comparacion");
+                return NONE;
+            }
         }
-        else{
-            //Error
-            System.out.println("Ocurrió un error en la comparacion");
-            return NONE;
-        }
+
+        return  typeElemtExp;
     }
 
     @Override
@@ -328,7 +345,7 @@ public class Checker extends generated.ownParserBaseVisitor
         int type=NONE;
         for (ownParser.ElementExpressionContext element: ctx.elementExpression()){
             type = (int) visit(element);
-            if(type!= INT)
+            if(type!= INT && type!=NEUTRAL)
             {
                 //ERROR
                 System.out.println("Ocurrió un error en la expression");
@@ -343,7 +360,7 @@ public class Checker extends generated.ownParserBaseVisitor
         int type=NONE;
         for (ownParser.ElementExpressionContext element: ctx.elementExpression()){
             type = (int) visit(element);
-            if(type!= INT)
+            if(type!= INT && type!=NEUTRAL)
             {
                 //ERROR
                 System.out.println("Ocurrió un error en la expression");
@@ -353,12 +370,16 @@ public class Checker extends generated.ownParserBaseVisitor
         return type;
     }
 
+
+    // aqui es donde se verifica las funciones de la tabla.
     @Override
-    public Object visitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx) {
+    public Object visitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx){
 
-        int typePrim =(int) visit(ctx.primitiveExpression());
+        ctx.
+        int type = (int)
 
-        //DUDE ¿Esto funciona? : hay que asegurarse que esto funcione
+        int typePrim = (int) visit(ctx.primitiveExpression());
+
         if(ctx.children.equals(ownParser.ElementAccessContext.class))
         {
             for(ownParser.ElementAccessContext element : ctx.elementAccess())
@@ -399,7 +420,9 @@ public class Checker extends generated.ownParserBaseVisitor
         else if(ctx.children.equals(ownParser.CallExpressionContext.class))
         {
             for (ownParser.CallExpressionContext element : ctx.callExpression()) {
-                int type = (int)visit(element);
+                int type = (int)visit(element); // retornar array si esta bueno y none si no esta bueno
+                // verificar si la funcion existe.
+
 
                 if(typePrim != FUNCTION)
                 {
@@ -419,21 +442,98 @@ public class Checker extends generated.ownParserBaseVisitor
 
     }
 
+
+
+    @Override
+    public Object visitElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx) {
+        return visit(ctx.primitiveExpression());
+    }
+
+
+    @Override
+    public Object visitElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx) {
+        return visit(ctx.elementAccess());
+    }
+
+    @Override
+    public Object visitElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx) {
+        return visit(ctx.callExpression());
+    }
+
+
+
+
     @Override
     public Object visitElemAcsMonkey(ownParser.ElemAcsMonkeyContext ctx) {
-        return visit(ctx.expression());
+        int type = (int) visit(ctx.primitiveExpression());
+        if(type== ARRAY)
+        {
+            for(ownParser.ExpressionContext element : ctx.expression())
+            {
+                int tyExp = (int)visit(element);
+                if(tyExp!= INT && tyExp!= NEUTRAL)
+                {
+                    System.out.println("Ocurrio un  error en el ");
+                    return NONE;
+                }
+            }
+
+
+            return NEUTRAL;
+
+        }
+        else if (type==HASH_LITERAL)
+        {
+            for (ownParser.ExpressionContext element:ctx.expression()) {
+                int tyExp = (int)visit(element);
+                if(tyExp!= INT && tyExp!=STRING && tyExp!= NEUTRAL)
+                {
+                    System.out.println("Ocurrio un  error en el ");
+                    return NONE;
+                }
+            }
+            return NEUTRAL;
+        }
+        else
+        {
+            System.out.println("Ocurrio un  error en el ");
+            return NONE;
+        }
     }
 
     @Override
     public Object visitCallExprMonkey(ownParser.CallExprMonkeyContext ctx){
-        //DUDE  ¿Se deben verificar/retornar la cantidad de parametros de la funcion especifica?
-        return NEUTRAL;
+        int typeExp =(int) visit(ctx.primitiveExpression());
+
+        if(typeExp==FUNCTION)
+        {
+            int numberParamsFunction = this.paramsNumber;
+            this.paramsNumber =0;
+            for (ownParser.ExpressionListContext element : ctx.expressionList()) {
+                int type = (int)visit(element);
+                int numParamsElement  =  this.paramsNumber;
+
+                if(type == ARRAY && numberParamsFunction==numParamsElement)
+                {
+                    return  NEUTRAL;
+                }
+                else
+                {
+                    return NONE;
+                }
+            }
+        }
     }
 
     @Override
     public Object visitPrimExprIntMonkey(ownParser.PrimExprIntMonkeyContext ctx) {
         return INT;
     }
+
+
+
+
+
 
     @Override
     public Object visitPrimExprStrMonkey(ownParser.PrimExprStrMonkeyContext ctx) {
@@ -443,15 +543,14 @@ public class Checker extends generated.ownParserBaseVisitor
     @Override
     public Object visitPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx){
         VariablesTable.Element variable = variablesTable.search(ctx.ID().getText());
-        MethodsTable.Element method = null;//= methodsTable.search(ctx.ID().getText());
-
-        //DUDE para Nathalie
+        MethodsTable.Element method = methodsTable.search(ctx.ID().getText());
         if (variable!= null)
         {
             return variable.type;
         }
         else if(method != null)
         {
+            paramsNumber = method.numberParams;
             return FUNCTION;
         }
         else
@@ -592,6 +691,7 @@ public class Checker extends generated.ownParserBaseVisitor
                 System.out.println("Ocurrio un error verificando los parametros");
                 return NONE;
             }
+            paramsNumber++;
         }
         //ACEPTED
         return NONE;
@@ -647,8 +747,10 @@ public class Checker extends generated.ownParserBaseVisitor
     public Object visitExprLstMonkey(ownParser.ExprLstMonkeyContext ctx){
         for(ownParser.ExpressionContext element : ctx.expression())
         {
+            this.paramsNumber ++;
             if((int)visit(element)== NONE)
             {
+                this.paramsNumber = 0;
                 return NONE;
             }
         }

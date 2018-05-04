@@ -144,12 +144,26 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMulFDivMonkey(ownParser.MulFDivMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ElemExprMonkey}
+	 * Visit a parse tree produced by the {@code ElemExprEAcMonkey}
 	 * labeled alternative in {@link ownParser#elementExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx);
+	T visitElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ElemExprCExpMonkey}
+	 * labeled alternative in {@link ownParser#elementExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ElemExprPrimiMonkey}
+	 * labeled alternative in {@link ownParser#elementExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ElemAcsMonkey}
 	 * labeled alternative in {@link ownParser#elementAccess}.

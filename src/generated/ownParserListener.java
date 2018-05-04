@@ -236,17 +236,41 @@ public interface ownParserListener extends ParseTreeListener {
 	 */
 	void exitMulFDivMonkey(ownParser.MulFDivMonkeyContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ElemExprMonkey}
+	 * Enter a parse tree produced by the {@code ElemExprEAcMonkey}
 	 * labeled alternative in {@link ownParser#elementExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterElemExprMonkey(ownParser.ElemExprMonkeyContext ctx);
+	void enterElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ElemExprMonkey}
+	 * Exit a parse tree produced by the {@code ElemExprEAcMonkey}
 	 * labeled alternative in {@link ownParser#elementExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx);
+	void exitElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ElemExprCExpMonkey}
+	 * labeled alternative in {@link ownParser#elementExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ElemExprCExpMonkey}
+	 * labeled alternative in {@link ownParser#elementExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ElemExprPrimiMonkey}
+	 * labeled alternative in {@link ownParser#elementExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ElemExprPrimiMonkey}
+	 * labeled alternative in {@link ownParser#elementExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ElemAcsMonkey}
 	 * labeled alternative in {@link ownParser#elementAccess}.

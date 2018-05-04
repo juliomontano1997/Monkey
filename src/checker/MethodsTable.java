@@ -17,6 +17,9 @@ public class MethodsTable {
         int returnType;
         ParserRuleContext context;
 
+        //Se deben inicializar los metodos en la tabla.
+
+
         public Element(int level, Token token, int numberParams, int returnType, ParserRuleContext context) {
             this.level = level;
             this.token = token;
@@ -28,6 +31,14 @@ public class MethodsTable {
         public String toString(){
             return this.token.getText() + ", " + this.numberParams + ", "+ this.returnType + ", " +this.level;
         }
+
+        public int getNumberParams() {
+            return numberParams;
+        }
+
+        public void setNumberParams(int numberParams) {
+            this.numberParams = numberParams;
+        }
     }
 
     public MethodsTable()
@@ -37,14 +48,14 @@ public class MethodsTable {
     }
 
 
-    public MethodsTable.Element insert(String n, int nP, int rT, ParserRuleContext d)
+    public MethodsTable.Element insert(String name, int paramsNumber, int returnType, ParserRuleContext context)
     {
-        Token tk = new CommonToken(0,n);
-        MethodsTable.Element i = new MethodsTable.Element(actualLevel,tk,nP,rT,d);
+        Token newToken = new CommonToken(0,name);
+        MethodsTable.Element i = new MethodsTable.Element(actualLevel,newToken,paramsNumber,returnType,context);
         int j = 0;
         while (j < this.table.size() && this.table.get(j).level == actualLevel) {
-            if (this.table.get(j).token.getText().equals(n) && this.table.get(j).numberParams == nP && this.table.get(j).returnType == rT) {
-                System.out.println("Function \"" + n + "\" already exist!!!");
+            if (this.table.get(j).token.getText().equals(name)) {
+                System.out.println("Function \"" + name + "\" already exist!!!");
                 return null;
             }
             j++;
@@ -52,6 +63,7 @@ public class MethodsTable {
         this.table.push(i);
         return this.table.get(0);
     }
+
 
     public void openScope(){
         this.actualLevel++;
@@ -69,12 +81,12 @@ public class MethodsTable {
         this.actualLevel--;
     }
 
-    public MethodsTable.Element search(String name, int amountParams, int returnType)
+    public MethodsTable.Element search(String name)
     {
         MethodsTable.Element temp = null;
-        for(MethodsTable.Element id : this.table)
-            if (id.token.getText().equals(name) && id.numberParams == amountParams && id.returnType == returnType) {
-                temp = id;
+        for(MethodsTable.Element element : this.table)
+            if (element.token.getText().equals(name)) {
+                temp = element;
                 break;
             }
         return temp;

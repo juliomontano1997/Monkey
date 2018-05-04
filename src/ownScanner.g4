@@ -54,7 +54,6 @@ Tipos Primitivos
 ID: LETTER (LETTER |DIGIT)*;
 INTEGER: DIGIT DIGIT*;
 STRING: '"' .*? '"';
-EMPTY : ' ';
 
 /*********************************
 Comentarios

@@ -150,7 +150,21 @@ public class ownParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitElemExprMonkey(ownParser.ElemExprMonkeyContext ctx) { return visitChildren(ctx); }
+	@Override public T visitElemExprEAcMonkey(ownParser.ElemExprEAcMonkeyContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitElemExprCExpMonkey(ownParser.ElemExprCExpMonkeyContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitElemExprPrimiMonkey(ownParser.ElemExprPrimiMonkeyContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -46,13 +46,13 @@ multiplicationFactor	 : (MUL elementExpression)*                                
 
 
 
-elementExpression 	     : primitiveExpression ((elementAccess|callExpression)*| ) #ElemExprMonkey;
+elementExpression 	     :  elementAccess                                          #ElemExprEAcMonkey
+                           |callExpression                                         #ElemExprCExpMonkey
+                           |primitiveExpression                                    #ElemExprPrimiMonkey;
 
-elementAccess       	 : CIZQ expression CDER                                    #ElemAcsMonkey;
+elementAccess       	 :primitiveExpression (CIZQ expression CDER)*                 #ElemAcsMonkey;
 
-callExpression	         : PIZQ expressionList PDER                                #CallExprMonkey;
-
-
+callExpression	         :primitiveExpression (PIZQ expressionList PDER)*             #CallExprMonkey;
 
 
 primitiveExpression	     : INTEGER                                                 #PrimExprIntMonkey
@@ -67,6 +67,10 @@ primitiveExpression	     : INTEGER                                              
                          | hashLiteral                                             #PrimHshLtlMonkey
                          | printExpression                                         #PrimPrtExprMonkey
                          | ifExpression                                            #PrimIfExprMonkey;
+
+
+
+
 
 
 

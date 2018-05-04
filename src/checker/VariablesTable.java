@@ -46,7 +46,7 @@ public class VariablesTable {
         Token newToken = new CommonToken(0,name);
         VariablesTable.Element newElement = new   VariablesTable.Element(actualLevel,newToken,type,context);
 
-        System.out.println("No se ha cahido");
+        System.out.println("No se ha caído");
         int actualPosition = 0;
         while (actualPosition < this.table.size() && this.table.get(actualPosition).level == actualLevel)
         {
