@@ -193,12 +193,12 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrimExprStrMonkey(ownParser.PrimExprStrMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code PrimExprIdMonkey}
+	 * Visit a parse tree produced by the {@code PrimExprIdenMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx);
+	T visitPrimExprIdenMonkey(ownParser.PrimExprIdenMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code PrimExprTMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
@@ -312,12 +312,12 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunLtlMonkey(ownParser.FunLtlMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code FunPrmtMonket}
+	 * Visit a parse tree produced by the {@code FunPrmtMonkey}
 	 * labeled alternative in {@link ownParser#functionParameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunPrmtMonket(ownParser.FunPrmtMonketContext ctx);
+	T visitFunPrmtMonkey(ownParser.FunPrmtMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code HshLtlMonkey}
 	 * labeled alternative in {@link ownParser#hashLiteral}.
@@ -374,4 +374,11 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBlckStMonkey(ownParser.BlckStMonkeyContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code IdMonkey}
+	 * labeled alternative in {@link ownParser#identifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdMonkey(ownParser.IdMonkeyContext ctx);
 }

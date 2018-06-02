@@ -320,17 +320,17 @@ public interface ownParserListener extends ParseTreeListener {
 	 */
 	void exitPrimExprStrMonkey(ownParser.PrimExprStrMonkeyContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code PrimExprIdMonkey}
+	 * Enter a parse tree produced by the {@code PrimExprIdenMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx);
+	void enterPrimExprIdenMonkey(ownParser.PrimExprIdenMonkeyContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code PrimExprIdMonkey}
+	 * Exit a parse tree produced by the {@code PrimExprIdenMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx);
+	void exitPrimExprIdenMonkey(ownParser.PrimExprIdenMonkeyContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code PrimExprTMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
@@ -524,17 +524,17 @@ public interface ownParserListener extends ParseTreeListener {
 	 */
 	void exitFunLtlMonkey(ownParser.FunLtlMonkeyContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code FunPrmtMonket}
+	 * Enter a parse tree produced by the {@code FunPrmtMonkey}
 	 * labeled alternative in {@link ownParser#functionParameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunPrmtMonket(ownParser.FunPrmtMonketContext ctx);
+	void enterFunPrmtMonkey(ownParser.FunPrmtMonkeyContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code FunPrmtMonket}
+	 * Exit a parse tree produced by the {@code FunPrmtMonkey}
 	 * labeled alternative in {@link ownParser#functionParameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunPrmtMonket(ownParser.FunPrmtMonketContext ctx);
+	void exitFunPrmtMonkey(ownParser.FunPrmtMonkeyContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code HshLtlMonkey}
 	 * labeled alternative in {@link ownParser#hashLiteral}.
@@ -631,4 +631,16 @@ public interface ownParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBlckStMonkey(ownParser.BlckStMonkeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IdMonkey}
+	 * labeled alternative in {@link ownParser#identifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdMonkey(ownParser.IdMonkeyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IdMonkey}
+	 * labeled alternative in {@link ownParser#identifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdMonkey(ownParser.IdMonkeyContext ctx);
 }

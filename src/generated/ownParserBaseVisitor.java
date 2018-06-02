@@ -199,7 +199,7 @@ public class ownParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrimExprIdenMonkey(ownParser.PrimExprIdenMonkeyContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -318,7 +318,7 @@ public class ownParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunPrmtMonket(ownParser.FunPrmtMonketContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunPrmtMonkey(ownParser.FunPrmtMonkeyContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -375,4 +375,11 @@ public class ownParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitBlckStMonkey(ownParser.BlckStMonkeyContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitIdMonkey(ownParser.IdMonkeyContext ctx) { return visitChildren(ctx); }
 }
