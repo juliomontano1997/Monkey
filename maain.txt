@@ -1,8 +1,68 @@
+import generated.*;
 import checker.Checker;
-import generated.ownErrors;
+import interprete.Interprete;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.*;
+
+import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.concurrent.ExecutionException;
+
+
+public class Main {
+
+    public static void main(String[] args){
+        ownScanner inst = null;
+        ownParser parser = null;
+
+        ANTLRInputStream input=null;
+        CommonTokenStream tokens = null;
+        try {
+            input = new ANTLRInputStream(new FileReader("test.txt"));
+            inst = new ownScanner(input);
+            tokens = new CommonTokenStream(inst);
+            parser = new ownParser(tokens);
+        }
+        catch(Exception e){System.out.println("No hay archivo");}
+
+        try {
+            ParseTree tree = parser.program();
+            System.out.println("\n+++++++++++++++++++++++++++++++  Checker messajes++++++++++++++++++++++++++++++++\n");
+            Checker che = new Checker();
+            che.visit(tree);
+            System.out.println("\n+++++++++++++++++++++++++++++++ Interprete messajes +++++++++++++++++++++++++++++\n");
+            Interprete interprete = new Interprete();
+            interprete.visit(tree);
+
+            Interprete.dataStorage.print();
+            Interprete.evaluationStack.print("");
+
+            //java.util.concurrent.Future <JFrame> treeGUI = org.antlr.v4.gui.Trees.inspect(tree,parser);
+            //treeGUI.get().setVisible(true);
+            System.out.println("Compilación Exitosa!!\n");
+        } catch(RecognitionException e) {
+            System.out.println("Compilación Fallida!!");
+        }
+
+    }
+}
+
+
+
+
+
+import checker.Checker;
+import checker.CheckerErrors;
+import generated.ParserErrors;
 import generated.ownParser;
 import generated.ownScanner;
-import org.antlr.v4.gui.Trees;
+import interprete.Interprete;
+import interprete.InterpreteErrors;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -12,6 +72,7 @@ import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
@@ -27,15 +88,15 @@ public class App extends JFrame
     ownScanner scanner = null;
     ownParser parser = null;
     Checker checker = null;
-    ownErrors errors = null;
     ParseTree tree = null;
+    Interprete interprete;
+    ParserErrors parserErrors;
+
+
     java.util.concurrent.Future <JFrame> treeGUI = null;
     org.antlr.v4.runtime.ANTLRInputStream input=null;
     CommonTokenStream tokens = null;
 
-    /**
-     * Initialise the application
-     */
     public App() {
         initComponents();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
@@ -113,8 +174,8 @@ public class App extends JFrame
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         fileOpener = new JFileChooser();
@@ -133,7 +194,7 @@ public class App extends JFrame
         jScrollPane2 = new JScrollPane();
         erroresTXT = new JTextArea();
         posicionActual = new JLabel();
-
+        erroresTXT.setForeground(Color.RED);
         display.addCaretListener(new CaretListener() {
             @Override
             public void caretUpdate(CaretEvent e) {
@@ -332,6 +393,8 @@ public class App extends JFrame
             System.out.println("No file selected");
         }
     }
+
+
     private  void saveArchive()
     {
         //If we are editing a file opened, then we have to save the contents on the same file, currentEditingFile
@@ -396,22 +459,26 @@ public class App extends JFrame
             saveArchive();
             erroresTXT.setText("");
             mensajesTXT.setText("");
-            errors = new ownErrors();
+            parserErrors = new ParserErrors();
 
             input = new org.antlr.v4.runtime.ANTLRInputStream( new FileInputStream(currentEditingFile));
             scanner = new ownScanner(input);
             scanner.removeErrorListeners();
-            scanner.addErrorListener(errors);
-
+            scanner.addErrorListener(parserErrors);
             tokens = new CommonTokenStream(scanner);
+
             parser = new ownParser(tokens);
             parser.removeErrorListeners();
-            parser.addErrorListener(errors);
-
+            parser.addErrorListener(parserErrors);
             tree = parser.program();
+
+
             checker = new Checker();
-            checker.addErrorListener(errors);
-            //checker.visit(tree);
+            checker.visit(tree);
+
+            interprete = new Interprete();
+            interprete.visit(tree);
+
             mensajesTXT.setText("Completed review");
         }
         catch(FileNotFoundException e)
@@ -422,12 +489,30 @@ public class App extends JFrame
         {
             String errs  = erroresTXT.getText();
             erroresTXT.setText(errs+"\n"+e.getMessage());
+            erroresTXT.requestFocus();
+            Mensajes.setSelectedIndex(1);
         }
+        catch (InterpreteErrors e)
+        {
+            String errs  = erroresTXT.getText();
+            erroresTXT.setText(errs+"\n"+e.getMessage());
+            erroresTXT.requestFocus();
+            Mensajes.setSelectedIndex(1);
+
+        }
+        catch (CheckerErrors e)
+        {
+            String errs  = erroresTXT.getText();
+            erroresTXT.setText(errs+"\n"+e.getMessage());
+            erroresTXT.requestFocus();
+            Mensajes.setSelectedIndex(1);
+        }
+
         catch(NullPointerException e)
         {
             System.out.println(e.toString());
-            JOptionPane.showMessageDialog(rootPane, "\n" +
-                    "Select the code to compile", "Warning", JOptionPane.ERROR_MESSAGE);
+
+            JOptionPane.showMessageDialog(rootPane, "\n" + "Select the code to compile", "Warning", JOptionPane.ERROR_MESSAGE);
         }
         catch (IOException e)
         {
@@ -452,7 +537,7 @@ public class App extends JFrame
         posicionActual.setText("Row: " + linea + " Col: " + columna);
     }
 
-    public static void main(String args[]) { 
+    public static void main(String args[]) {
         try
         {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -470,7 +555,7 @@ public class App extends JFrame
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new App().setVisible(true);

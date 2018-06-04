@@ -1,4 +1,4 @@
-// Generated from C:/Users/julio/Desktop/ProyectoII/src\ownParser.g4 by ANTLR 4.7
+// Generated from C:/Users/julio/Desktop/AvanceIII/src\ownParser.g4 by ANTLR 4.7
 package generated;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -24,22 +24,20 @@ public class ownParser extends Parser {
 		INTEGER=34, STRING=35, LINE_COMMENT=36, SPECIAL_COMMENT=37, WS=38;
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_letStatement = 2, RULE_returnStatement = 3, 
-		RULE_expressionStatement = 4, RULE_expression = 5, RULE_comparison = 6, 
-		RULE_additionExpression = 7, RULE_additionFactor = 8, RULE_multiplicationExpression = 9, 
-		RULE_multiplicationFactor = 10, RULE_elementExpression = 11, RULE_elementAccess = 12, 
-		RULE_callExpression = 13, RULE_primitiveExpression = 14, RULE_arrayFunctions = 15, 
-		RULE_arrayLiteral = 16, RULE_functionLiteral = 17, RULE_functionParameters = 18, 
-		RULE_hashLiteral = 19, RULE_hashContent = 20, RULE_moreHashContent = 21, 
-		RULE_expressionList = 22, RULE_printExpression = 23, RULE_ifExpression = 24, 
-		RULE_blockStatement = 25, RULE_identifier = 26;
+		RULE_expressionStatement = 4, RULE_expression = 5, RULE_additionExpression = 6, 
+		RULE_multiplicationExpression = 7, RULE_elementExpression = 8, RULE_elementAccess = 9, 
+		RULE_callExpression = 10, RULE_primitiveExpression = 11, RULE_arrayFunctions = 12, 
+		RULE_arrayLiteral = 13, RULE_functionLiteral = 14, RULE_functionParameters = 15, 
+		RULE_hashLiteral = 16, RULE_hashContent = 17, RULE_moreHashContent = 18, 
+		RULE_expressionList = 19, RULE_printExpression = 20, RULE_ifExpression = 21, 
+		RULE_blockStatement = 22, RULE_identifier = 23;
 	public static final String[] ruleNames = {
 		"program", "statement", "letStatement", "returnStatement", "expressionStatement", 
-		"expression", "comparison", "additionExpression", "additionFactor", "multiplicationExpression", 
-		"multiplicationFactor", "elementExpression", "elementAccess", "callExpression", 
-		"primitiveExpression", "arrayFunctions", "arrayLiteral", "functionLiteral", 
-		"functionParameters", "hashLiteral", "hashContent", "moreHashContent", 
-		"expressionList", "printExpression", "ifExpression", "blockStatement", 
-		"identifier"
+		"expression", "additionExpression", "multiplicationExpression", "elementExpression", 
+		"elementAccess", "callExpression", "primitiveExpression", "arrayFunctions", 
+		"arrayLiteral", "functionLiteral", "functionParameters", "hashLiteral", 
+		"hashContent", "moreHashContent", "expressionList", "printExpression", 
+		"ifExpression", "blockStatement", "identifier"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -146,17 +144,17 @@ public class ownParser extends Parser {
 			_localctx = new ProgMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(57);
+			setState(51);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CIZQ) | (1L << PIZQ) | (1L << LIZQ) | (1L << LET) | (1L << RETURN) | (1L << LEN) | (1L << FIRST) | (1L << LAST) | (1L << REST) | (1L << PUSH) | (1L << FN) | (1L << PUTS) | (1L << IF) | (1L << TRUE) | (1L << FALSE) | (1L << ID) | (1L << INTEGER) | (1L << STRING))) != 0)) {
 				{
 				{
-				setState(54);
+				setState(48);
 				statement();
 				}
 				}
-				setState(59);
+				setState(53);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -248,16 +246,16 @@ public class ownParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_statement);
 		try {
-			setState(65);
+			setState(59);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LET:
 				_localctx = new StLetMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(60);
+				setState(54);
 				match(LET);
-				setState(61);
+				setState(55);
 				letStatement();
 				}
 				break;
@@ -265,9 +263,9 @@ public class ownParser extends Parser {
 				_localctx = new StRtnMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(62);
+				setState(56);
 				match(RETURN);
-				setState(63);
+				setState(57);
 				returnStatement();
 				}
 				break;
@@ -290,7 +288,7 @@ public class ownParser extends Parser {
 				_localctx = new StExprMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(64);
+				setState(58);
 				expressionStatement();
 				}
 				break;
@@ -352,18 +350,18 @@ public class ownParser extends Parser {
 			_localctx = new LetStMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67);
+			setState(61);
 			match(ID);
-			setState(68);
+			setState(62);
 			match(ASSIGN);
-			setState(69);
+			setState(63);
 			expression();
-			setState(72);
+			setState(66);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case PyCOMA:
 				{
-				setState(70);
+				setState(64);
 				match(PyCOMA);
 				}
 				break;
@@ -445,14 +443,14 @@ public class ownParser extends Parser {
 			_localctx = new RtnStMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(68);
 			expression();
-			setState(77);
+			setState(71);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case PyCOMA:
 				{
-				setState(75);
+				setState(69);
 				match(PyCOMA);
 				}
 				break;
@@ -534,14 +532,14 @@ public class ownParser extends Parser {
 			_localctx = new ExprStMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(79);
+			setState(73);
 			expression();
-			setState(82);
+			setState(76);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case PyCOMA:
 				{
-				setState(80);
+				setState(74);
 				match(PyCOMA);
 				}
 				break;
@@ -595,76 +593,18 @@ public class ownParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class ExprMonkeyContext extends ExpressionContext {
-		public AdditionExpressionContext additionExpression() {
-			return getRuleContext(AdditionExpressionContext.class,0);
-		}
-		public ComparisonContext comparison() {
-			return getRuleContext(ComparisonContext.class,0);
-		}
-		public ExprMonkeyContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterExprMonkey(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).exitExprMonkey(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ownParserVisitor ) return ((ownParserVisitor<? extends T>)visitor).visitExprMonkey(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final ExpressionContext expression() throws RecognitionException {
-		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_expression);
-		try {
-			_localctx = new ExprMonkeyContext(_localctx);
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(84);
-			additionExpression();
-			setState(85);
-			comparison();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class ComparisonContext extends ParserRuleContext {
-		public ComparisonContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_comparison; }
-	 
-		public ComparisonContext() { }
-		public void copyFrom(ComparisonContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class CompMayMonkeyContext extends ComparisonContext {
-		public List<TerminalNode> MAYOR() { return getTokens(ownParser.MAYOR); }
-		public TerminalNode MAYOR(int i) {
-			return getToken(ownParser.MAYOR, i);
-		}
+	public static class CompMayMonkeyContext extends ExpressionContext {
 		public List<AdditionExpressionContext> additionExpression() {
 			return getRuleContexts(AdditionExpressionContext.class);
 		}
 		public AdditionExpressionContext additionExpression(int i) {
 			return getRuleContext(AdditionExpressionContext.class,i);
 		}
-		public CompMayMonkeyContext(ComparisonContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> MAYOR() { return getTokens(ownParser.MAYOR); }
+		public TerminalNode MAYOR(int i) {
+			return getToken(ownParser.MAYOR, i);
+		}
+		public CompMayMonkeyContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterCompMayMonkey(this);
@@ -679,18 +619,18 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class CompIgMonkeyContext extends ComparisonContext {
-		public List<TerminalNode> IGUALCOMP() { return getTokens(ownParser.IGUALCOMP); }
-		public TerminalNode IGUALCOMP(int i) {
-			return getToken(ownParser.IGUALCOMP, i);
-		}
+	public static class CompIgMonkeyContext extends ExpressionContext {
 		public List<AdditionExpressionContext> additionExpression() {
 			return getRuleContexts(AdditionExpressionContext.class);
 		}
 		public AdditionExpressionContext additionExpression(int i) {
 			return getRuleContext(AdditionExpressionContext.class,i);
 		}
-		public CompIgMonkeyContext(ComparisonContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> IGUALCOMP() { return getTokens(ownParser.IGUALCOMP); }
+		public TerminalNode IGUALCOMP(int i) {
+			return getToken(ownParser.IGUALCOMP, i);
+		}
+		public CompIgMonkeyContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterCompIgMonkey(this);
@@ -705,18 +645,18 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class CompMenMonkeyContext extends ComparisonContext {
-		public List<TerminalNode> MENOR() { return getTokens(ownParser.MENOR); }
-		public TerminalNode MENOR(int i) {
-			return getToken(ownParser.MENOR, i);
-		}
+	public static class CompMenMonkeyContext extends ExpressionContext {
 		public List<AdditionExpressionContext> additionExpression() {
 			return getRuleContexts(AdditionExpressionContext.class);
 		}
 		public AdditionExpressionContext additionExpression(int i) {
 			return getRuleContext(AdditionExpressionContext.class,i);
 		}
-		public CompMenMonkeyContext(ComparisonContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> MENOR() { return getTokens(ownParser.MENOR); }
+		public TerminalNode MENOR(int i) {
+			return getToken(ownParser.MENOR, i);
+		}
+		public CompMenMonkeyContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterCompMenMonkey(this);
@@ -731,18 +671,18 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class CompMeIMonkeyContext extends ComparisonContext {
-		public List<TerminalNode> MENORIGUAL() { return getTokens(ownParser.MENORIGUAL); }
-		public TerminalNode MENORIGUAL(int i) {
-			return getToken(ownParser.MENORIGUAL, i);
-		}
+	public static class CompMeIMonkeyContext extends ExpressionContext {
 		public List<AdditionExpressionContext> additionExpression() {
 			return getRuleContexts(AdditionExpressionContext.class);
 		}
 		public AdditionExpressionContext additionExpression(int i) {
 			return getRuleContext(AdditionExpressionContext.class,i);
 		}
-		public CompMeIMonkeyContext(ComparisonContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> MENORIGUAL() { return getTokens(ownParser.MENORIGUAL); }
+		public TerminalNode MENORIGUAL(int i) {
+			return getToken(ownParser.MENORIGUAL, i);
+		}
+		public CompMeIMonkeyContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterCompMeIMonkey(this);
@@ -757,18 +697,18 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class CompMaIMonkeyContext extends ComparisonContext {
-		public List<TerminalNode> MAYORIGUAL() { return getTokens(ownParser.MAYORIGUAL); }
-		public TerminalNode MAYORIGUAL(int i) {
-			return getToken(ownParser.MAYORIGUAL, i);
-		}
+	public static class CompMaIMonkeyContext extends ExpressionContext {
 		public List<AdditionExpressionContext> additionExpression() {
 			return getRuleContexts(AdditionExpressionContext.class);
 		}
 		public AdditionExpressionContext additionExpression(int i) {
 			return getRuleContext(AdditionExpressionContext.class,i);
 		}
-		public CompMaIMonkeyContext(ComparisonContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> MAYORIGUAL() { return getTokens(ownParser.MAYORIGUAL); }
+		public TerminalNode MAYORIGUAL(int i) {
+			return getToken(ownParser.MAYORIGUAL, i);
+		}
+		public CompMaIMonkeyContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterCompMaIMonkey(this);
@@ -784,26 +724,52 @@ public class ownParser extends Parser {
 		}
 	}
 
-	public final ComparisonContext comparison() throws RecognitionException {
-		ComparisonContext _localctx = new ComparisonContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_comparison);
+	public final ExpressionContext expression() throws RecognitionException {
+		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_expression);
 		int _la;
 		try {
-			setState(122);
+			setState(118);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				_localctx = new CompMenMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(91);
+				setState(78);
+				additionExpression();
+				setState(83);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==MENOR) {
 					{
 					{
-					setState(87);
+					setState(79);
 					match(MENOR);
+					setState(80);
+					additionExpression();
+					}
+					}
+					setState(85);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				}
+				break;
+			case 2:
+				_localctx = new CompMayMonkeyContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(86);
+				additionExpression();
+				setState(91);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==MAYOR) {
+					{
+					{
+					setState(87);
+					match(MAYOR);
 					setState(88);
 					additionExpression();
 					}
@@ -814,45 +780,25 @@ public class ownParser extends Parser {
 				}
 				}
 				break;
-			case 2:
-				_localctx = new CompMayMonkeyContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(98);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==MAYOR) {
-					{
-					{
-					setState(94);
-					match(MAYOR);
-					setState(95);
-					additionExpression();
-					}
-					}
-					setState(100);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				break;
 			case 3:
 				_localctx = new CompMeIMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(105);
+				setState(94);
+				additionExpression();
+				setState(99);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==MENORIGUAL) {
 					{
 					{
-					setState(101);
+					setState(95);
 					match(MENORIGUAL);
-					setState(102);
+					setState(96);
 					additionExpression();
 					}
 					}
-					setState(107);
+					setState(101);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -862,19 +808,21 @@ public class ownParser extends Parser {
 				_localctx = new CompMaIMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(112);
+				setState(102);
+				additionExpression();
+				setState(107);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==MAYORIGUAL) {
 					{
 					{
-					setState(108);
+					setState(103);
 					match(MAYORIGUAL);
-					setState(109);
+					setState(104);
 					additionExpression();
 					}
 					}
-					setState(114);
+					setState(109);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -884,19 +832,21 @@ public class ownParser extends Parser {
 				_localctx = new CompIgMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(119);
+				setState(110);
+				additionExpression();
+				setState(115);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==IGUALCOMP) {
 					{
 					{
-					setState(115);
+					setState(111);
 					match(IGUALCOMP);
-					setState(116);
+					setState(112);
 					additionExpression();
 					}
 					}
-					setState(121);
+					setState(117);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -926,76 +876,18 @@ public class ownParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class AddExprMonkeyContext extends AdditionExpressionContext {
-		public MultiplicationExpressionContext multiplicationExpression() {
-			return getRuleContext(MultiplicationExpressionContext.class,0);
-		}
-		public AdditionFactorContext additionFactor() {
-			return getRuleContext(AdditionFactorContext.class,0);
-		}
-		public AddExprMonkeyContext(AdditionExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterAddExprMonkey(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).exitAddExprMonkey(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ownParserVisitor ) return ((ownParserVisitor<? extends T>)visitor).visitAddExprMonkey(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final AdditionExpressionContext additionExpression() throws RecognitionException {
-		AdditionExpressionContext _localctx = new AdditionExpressionContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_additionExpression);
-		try {
-			_localctx = new AddExprMonkeyContext(_localctx);
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(124);
-			multiplicationExpression();
-			setState(125);
-			additionFactor();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class AdditionFactorContext extends ParserRuleContext {
-		public AdditionFactorContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_additionFactor; }
-	 
-		public AdditionFactorContext() { }
-		public void copyFrom(AdditionFactorContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class AddFSumMonkeyContext extends AdditionFactorContext {
-		public List<TerminalNode> SUM() { return getTokens(ownParser.SUM); }
-		public TerminalNode SUM(int i) {
-			return getToken(ownParser.SUM, i);
-		}
+	public static class AddFSumMonkeyContext extends AdditionExpressionContext {
 		public List<MultiplicationExpressionContext> multiplicationExpression() {
 			return getRuleContexts(MultiplicationExpressionContext.class);
 		}
 		public MultiplicationExpressionContext multiplicationExpression(int i) {
 			return getRuleContext(MultiplicationExpressionContext.class,i);
 		}
-		public AddFSumMonkeyContext(AdditionFactorContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> SUM() { return getTokens(ownParser.SUM); }
+		public TerminalNode SUM(int i) {
+			return getToken(ownParser.SUM, i);
+		}
+		public AddFSumMonkeyContext(AdditionExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterAddFSumMonkey(this);
@@ -1010,18 +902,18 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class AddFSubMonkeyContext extends AdditionFactorContext {
-		public List<TerminalNode> SUB() { return getTokens(ownParser.SUB); }
-		public TerminalNode SUB(int i) {
-			return getToken(ownParser.SUB, i);
-		}
+	public static class AddFSubMonkeyContext extends AdditionExpressionContext {
 		public List<MultiplicationExpressionContext> multiplicationExpression() {
 			return getRuleContexts(MultiplicationExpressionContext.class);
 		}
 		public MultiplicationExpressionContext multiplicationExpression(int i) {
 			return getRuleContext(MultiplicationExpressionContext.class,i);
 		}
-		public AddFSubMonkeyContext(AdditionFactorContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> SUB() { return getTokens(ownParser.SUB); }
+		public TerminalNode SUB(int i) {
+			return getToken(ownParser.SUB, i);
+		}
+		public AddFSubMonkeyContext(AdditionExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterAddFSubMonkey(this);
@@ -1037,31 +929,33 @@ public class ownParser extends Parser {
 		}
 	}
 
-	public final AdditionFactorContext additionFactor() throws RecognitionException {
-		AdditionFactorContext _localctx = new AdditionFactorContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_additionFactor);
+	public final AdditionExpressionContext additionExpression() throws RecognitionException {
+		AdditionExpressionContext _localctx = new AdditionExpressionContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_additionExpression);
 		int _la;
 		try {
-			setState(141);
+			setState(136);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
 			case 1:
 				_localctx = new AddFSumMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(131);
+				setState(120);
+				multiplicationExpression();
+				setState(125);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==SUM) {
 					{
 					{
-					setState(127);
+					setState(121);
 					match(SUM);
-					setState(128);
+					setState(122);
 					multiplicationExpression();
 					}
 					}
-					setState(133);
+					setState(127);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -1071,19 +965,21 @@ public class ownParser extends Parser {
 				_localctx = new AddFSubMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(138);
+				setState(128);
+				multiplicationExpression();
+				setState(133);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==SUB) {
 					{
 					{
-					setState(134);
+					setState(129);
 					match(SUB);
-					setState(135);
+					setState(130);
 					multiplicationExpression();
 					}
 					}
-					setState(140);
+					setState(135);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -1113,76 +1009,18 @@ public class ownParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class MulExprMonkeyContext extends MultiplicationExpressionContext {
-		public ElementExpressionContext elementExpression() {
-			return getRuleContext(ElementExpressionContext.class,0);
-		}
-		public MultiplicationFactorContext multiplicationFactor() {
-			return getRuleContext(MultiplicationFactorContext.class,0);
-		}
-		public MulExprMonkeyContext(MultiplicationExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterMulExprMonkey(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).exitMulExprMonkey(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ownParserVisitor ) return ((ownParserVisitor<? extends T>)visitor).visitMulExprMonkey(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final MultiplicationExpressionContext multiplicationExpression() throws RecognitionException {
-		MultiplicationExpressionContext _localctx = new MultiplicationExpressionContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_multiplicationExpression);
-		try {
-			_localctx = new MulExprMonkeyContext(_localctx);
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(143);
-			elementExpression();
-			setState(144);
-			multiplicationFactor();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class MultiplicationFactorContext extends ParserRuleContext {
-		public MultiplicationFactorContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_multiplicationFactor; }
-	 
-		public MultiplicationFactorContext() { }
-		public void copyFrom(MultiplicationFactorContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class MulFDivMonkeyContext extends MultiplicationFactorContext {
-		public List<TerminalNode> DIV() { return getTokens(ownParser.DIV); }
-		public TerminalNode DIV(int i) {
-			return getToken(ownParser.DIV, i);
-		}
+	public static class MulFDivMonkeyContext extends MultiplicationExpressionContext {
 		public List<ElementExpressionContext> elementExpression() {
 			return getRuleContexts(ElementExpressionContext.class);
 		}
 		public ElementExpressionContext elementExpression(int i) {
 			return getRuleContext(ElementExpressionContext.class,i);
 		}
-		public MulFDivMonkeyContext(MultiplicationFactorContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> DIV() { return getTokens(ownParser.DIV); }
+		public TerminalNode DIV(int i) {
+			return getToken(ownParser.DIV, i);
+		}
+		public MulFDivMonkeyContext(MultiplicationExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterMulFDivMonkey(this);
@@ -1197,18 +1035,18 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class MulFMulMonkeyContext extends MultiplicationFactorContext {
-		public List<TerminalNode> MUL() { return getTokens(ownParser.MUL); }
-		public TerminalNode MUL(int i) {
-			return getToken(ownParser.MUL, i);
-		}
+	public static class MulFMulMonkeyContext extends MultiplicationExpressionContext {
 		public List<ElementExpressionContext> elementExpression() {
 			return getRuleContexts(ElementExpressionContext.class);
 		}
 		public ElementExpressionContext elementExpression(int i) {
 			return getRuleContext(ElementExpressionContext.class,i);
 		}
-		public MulFMulMonkeyContext(MultiplicationFactorContext ctx) { copyFrom(ctx); }
+		public List<TerminalNode> MUL() { return getTokens(ownParser.MUL); }
+		public TerminalNode MUL(int i) {
+			return getToken(ownParser.MUL, i);
+		}
+		public MulFMulMonkeyContext(MultiplicationExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterMulFMulMonkey(this);
@@ -1224,31 +1062,33 @@ public class ownParser extends Parser {
 		}
 	}
 
-	public final MultiplicationFactorContext multiplicationFactor() throws RecognitionException {
-		MultiplicationFactorContext _localctx = new MultiplicationFactorContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_multiplicationFactor);
+	public final MultiplicationExpressionContext multiplicationExpression() throws RecognitionException {
+		MultiplicationExpressionContext _localctx = new MultiplicationExpressionContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_multiplicationExpression);
 		int _la;
 		try {
-			setState(160);
+			setState(154);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				_localctx = new MulFMulMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(150);
+				setState(138);
+				elementExpression();
+				setState(143);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==MUL) {
 					{
 					{
-					setState(146);
+					setState(139);
 					match(MUL);
-					setState(147);
+					setState(140);
 					elementExpression();
 					}
 					}
-					setState(152);
+					setState(145);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -1258,19 +1098,21 @@ public class ownParser extends Parser {
 				_localctx = new MulFDivMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(157);
+				setState(146);
+				elementExpression();
+				setState(151);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==DIV) {
 					{
 					{
-					setState(153);
+					setState(147);
 					match(DIV);
-					setState(154);
+					setState(148);
 					elementExpression();
 					}
 					}
-					setState(159);
+					setState(153);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -1360,16 +1202,16 @@ public class ownParser extends Parser {
 
 	public final ElementExpressionContext elementExpression() throws RecognitionException {
 		ElementExpressionContext _localctx = new ElementExpressionContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_elementExpression);
+		enterRule(_localctx, 16, RULE_elementExpression);
 		try {
-			setState(165);
+			setState(159);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
 				_localctx = new ElemExprEAcMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(162);
+				setState(156);
 				elementAccess();
 				}
 				break;
@@ -1377,7 +1219,7 @@ public class ownParser extends Parser {
 				_localctx = new ElemExprCExpMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(163);
+				setState(157);
 				callExpression();
 				}
 				break;
@@ -1385,7 +1227,7 @@ public class ownParser extends Parser {
 				_localctx = new ElemExprPrimiMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(164);
+				setState(158);
 				primitiveExpression();
 				}
 				break;
@@ -1449,15 +1291,15 @@ public class ownParser extends Parser {
 
 	public final ElementAccessContext elementAccess() throws RecognitionException {
 		ElementAccessContext _localctx = new ElementAccessContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_elementAccess);
+		enterRule(_localctx, 18, RULE_elementAccess);
 		try {
 			int _alt;
 			_localctx = new ElemAcsMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(167);
+			setState(161);
 			primitiveExpression();
-			setState(172); 
+			setState(166); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -1465,11 +1307,11 @@ public class ownParser extends Parser {
 				case 1:
 					{
 					{
-					setState(168);
+					setState(162);
 					match(CIZQ);
-					setState(169);
+					setState(163);
 					expression();
-					setState(170);
+					setState(164);
 					match(CDER);
 					}
 					}
@@ -1477,7 +1319,7 @@ public class ownParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(174); 
+				setState(168); 
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,18,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
@@ -1509,20 +1351,11 @@ public class ownParser extends Parser {
 		public PrimitiveExpressionContext primitiveExpression() {
 			return getRuleContext(PrimitiveExpressionContext.class,0);
 		}
-		public List<TerminalNode> PIZQ() { return getTokens(ownParser.PIZQ); }
-		public TerminalNode PIZQ(int i) {
-			return getToken(ownParser.PIZQ, i);
+		public TerminalNode PIZQ() { return getToken(ownParser.PIZQ, 0); }
+		public ExpressionListContext expressionList() {
+			return getRuleContext(ExpressionListContext.class,0);
 		}
-		public List<ExpressionListContext> expressionList() {
-			return getRuleContexts(ExpressionListContext.class);
-		}
-		public ExpressionListContext expressionList(int i) {
-			return getRuleContext(ExpressionListContext.class,i);
-		}
-		public List<TerminalNode> PDER() { return getTokens(ownParser.PDER); }
-		public TerminalNode PDER(int i) {
-			return getToken(ownParser.PDER, i);
-		}
+		public TerminalNode PDER() { return getToken(ownParser.PDER, 0); }
 		public CallExprMonkeyContext(CallExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1541,38 +1374,21 @@ public class ownParser extends Parser {
 
 	public final CallExpressionContext callExpression() throws RecognitionException {
 		CallExpressionContext _localctx = new CallExpressionContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_callExpression);
+		enterRule(_localctx, 20, RULE_callExpression);
 		try {
-			int _alt;
 			_localctx = new CallExprMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(176);
+			setState(170);
 			primitiveExpression();
-			setState(181); 
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(177);
-					match(PIZQ);
-					setState(178);
-					expressionList();
-					setState(179);
-					match(PDER);
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(183); 
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+			{
+			setState(171);
+			match(PIZQ);
+			setState(172);
+			expressionList();
+			setState(173);
+			match(PDER);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1613,25 +1429,6 @@ public class ownParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof ownParserVisitor ) return ((ownParserVisitor<? extends T>)visitor).visitPrimPrtExprMonkey(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class PrimExprIdenMonkeyContext extends PrimitiveExpressionContext {
-		public IdentifierContext identifier() {
-			return getRuleContext(IdentifierContext.class,0);
-		}
-		public PrimExprIdenMonkeyContext(PrimitiveExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterPrimExprIdenMonkey(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).exitPrimExprIdenMonkey(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ownParserVisitor ) return ((ownParserVisitor<? extends T>)visitor).visitPrimExprIdenMonkey(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1805,8 +1602,8 @@ public class ownParser extends Parser {
 			return getRuleContext(ArrayFunctionsContext.class,0);
 		}
 		public TerminalNode PIZQ() { return getToken(ownParser.PIZQ, 0); }
-		public ExpressionListContext expressionList() {
-			return getRuleContext(ExpressionListContext.class,0);
+		public PrimitiveExpressionContext primitiveExpression() {
+			return getRuleContext(PrimitiveExpressionContext.class,0);
 		}
 		public TerminalNode PDER() { return getToken(ownParser.PDER, 0); }
 		public PrimArrFMonkeyContext(PrimitiveExpressionContext ctx) { copyFrom(ctx); }
@@ -1824,19 +1621,38 @@ public class ownParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class PrimExprIdMonkeyContext extends PrimitiveExpressionContext {
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
+		public PrimExprIdMonkeyContext(PrimitiveExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).enterPrimExprIdMonkey(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ownParserListener ) ((ownParserListener)listener).exitPrimExprIdMonkey(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ownParserVisitor ) return ((ownParserVisitor<? extends T>)visitor).visitPrimExprIdMonkey(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 
 	public final PrimitiveExpressionContext primitiveExpression() throws RecognitionException {
 		PrimitiveExpressionContext _localctx = new PrimitiveExpressionContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_primitiveExpression);
+		enterRule(_localctx, 22, RULE_primitiveExpression);
 		try {
-			setState(204);
+			setState(194);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INTEGER:
 				_localctx = new PrimExprIntMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(185);
+				setState(175);
 				match(INTEGER);
 				}
 				break;
@@ -1844,15 +1660,15 @@ public class ownParser extends Parser {
 				_localctx = new PrimExprStrMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(186);
+				setState(176);
 				match(STRING);
 				}
 				break;
 			case ID:
-				_localctx = new PrimExprIdenMonkeyContext(_localctx);
+				_localctx = new PrimExprIdMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(187);
+				setState(177);
 				identifier();
 				}
 				break;
@@ -1860,7 +1676,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimExprTMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(188);
+				setState(178);
 				match(TRUE);
 				}
 				break;
@@ -1868,7 +1684,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimExprFMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(189);
+				setState(179);
 				match(FALSE);
 				}
 				break;
@@ -1876,11 +1692,11 @@ public class ownParser extends Parser {
 				_localctx = new PrimExprMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(190);
+				setState(180);
 				match(PIZQ);
-				setState(191);
+				setState(181);
 				expression();
-				setState(192);
+				setState(182);
 				match(PDER);
 				}
 				break;
@@ -1888,7 +1704,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimArrLMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(194);
+				setState(184);
 				arrayLiteral();
 				}
 				break;
@@ -1900,13 +1716,13 @@ public class ownParser extends Parser {
 				_localctx = new PrimArrFMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(195);
+				setState(185);
 				arrayFunctions();
-				setState(196);
+				setState(186);
 				match(PIZQ);
-				setState(197);
-				expressionList();
-				setState(198);
+				setState(187);
+				primitiveExpression();
+				setState(188);
 				match(PDER);
 				}
 				break;
@@ -1914,7 +1730,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimFunLtlMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(200);
+				setState(190);
 				functionLiteral();
 				}
 				break;
@@ -1922,7 +1738,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimHshLtlMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(201);
+				setState(191);
 				hashLiteral();
 				}
 				break;
@@ -1930,7 +1746,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimPrtExprMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(202);
+				setState(192);
 				printExpression();
 				}
 				break;
@@ -1938,7 +1754,7 @@ public class ownParser extends Parser {
 				_localctx = new PrimIfExprMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(203);
+				setState(193);
 				ifExpression();
 				}
 				break;
@@ -2056,16 +1872,16 @@ public class ownParser extends Parser {
 
 	public final ArrayFunctionsContext arrayFunctions() throws RecognitionException {
 		ArrayFunctionsContext _localctx = new ArrayFunctionsContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_arrayFunctions);
+		enterRule(_localctx, 24, RULE_arrayFunctions);
 		try {
-			setState(211);
+			setState(201);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LEN:
 				_localctx = new ArrFLenMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(206);
+				setState(196);
 				match(LEN);
 				}
 				break;
@@ -2073,7 +1889,7 @@ public class ownParser extends Parser {
 				_localctx = new ArrFFirMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(207);
+				setState(197);
 				match(FIRST);
 				}
 				break;
@@ -2081,7 +1897,7 @@ public class ownParser extends Parser {
 				_localctx = new ArrFLstMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(208);
+				setState(198);
 				match(LAST);
 				}
 				break;
@@ -2089,7 +1905,7 @@ public class ownParser extends Parser {
 				_localctx = new ArrFRstMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(209);
+				setState(199);
 				match(REST);
 				}
 				break;
@@ -2097,7 +1913,7 @@ public class ownParser extends Parser {
 				_localctx = new ArrFPshMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(210);
+				setState(200);
 				match(PUSH);
 				}
 				break;
@@ -2151,16 +1967,16 @@ public class ownParser extends Parser {
 
 	public final ArrayLiteralContext arrayLiteral() throws RecognitionException {
 		ArrayLiteralContext _localctx = new ArrayLiteralContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_arrayLiteral);
+		enterRule(_localctx, 26, RULE_arrayLiteral);
 		try {
 			_localctx = new ArrLtlMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(213);
+			setState(203);
 			match(CIZQ);
-			setState(214);
+			setState(204);
 			expressionList();
-			setState(215);
+			setState(205);
 			match(CDER);
 			}
 		}
@@ -2214,20 +2030,20 @@ public class ownParser extends Parser {
 
 	public final FunctionLiteralContext functionLiteral() throws RecognitionException {
 		FunctionLiteralContext _localctx = new FunctionLiteralContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_functionLiteral);
+		enterRule(_localctx, 28, RULE_functionLiteral);
 		try {
 			_localctx = new FunLtlMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(217);
+			setState(207);
 			match(FN);
-			setState(218);
+			setState(208);
 			match(PIZQ);
-			setState(219);
+			setState(209);
 			functionParameters();
-			setState(220);
+			setState(210);
 			match(PDER);
-			setState(221);
+			setState(211);
 			blockStatement();
 			}
 		}
@@ -2280,32 +2096,32 @@ public class ownParser extends Parser {
 
 	public final FunctionParametersContext functionParameters() throws RecognitionException {
 		FunctionParametersContext _localctx = new FunctionParametersContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_functionParameters);
+		enterRule(_localctx, 30, RULE_functionParameters);
 		int _la;
 		try {
 			_localctx = new FunPrmtMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(232);
+			setState(222);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ID:
 				{
-				setState(223);
+				setState(213);
 				match(ID);
-				setState(228);
+				setState(218);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMA) {
 					{
 					{
-					setState(224);
+					setState(214);
 					match(COMA);
-					setState(225);
+					setState(215);
 					match(ID);
 					}
 					}
-					setState(230);
+					setState(220);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -2369,18 +2185,18 @@ public class ownParser extends Parser {
 
 	public final HashLiteralContext hashLiteral() throws RecognitionException {
 		HashLiteralContext _localctx = new HashLiteralContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_hashLiteral);
+		enterRule(_localctx, 32, RULE_hashLiteral);
 		try {
 			_localctx = new HshLtlMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(234);
+			setState(224);
 			match(LIZQ);
-			setState(235);
+			setState(225);
 			hashContent();
-			setState(236);
+			setState(226);
 			moreHashContent();
-			setState(237);
+			setState(227);
 			match(LDER);
 			}
 		}
@@ -2432,16 +2248,16 @@ public class ownParser extends Parser {
 
 	public final HashContentContext hashContent() throws RecognitionException {
 		HashContentContext _localctx = new HashContentContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_hashContent);
+		enterRule(_localctx, 34, RULE_hashContent);
 		try {
 			_localctx = new HshCntMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(239);
+			setState(229);
 			expression();
-			setState(240);
+			setState(230);
 			match(DOSPUN);
-			setState(241);
+			setState(231);
 			expression();
 			}
 		}
@@ -2496,25 +2312,25 @@ public class ownParser extends Parser {
 
 	public final MoreHashContentContext moreHashContent() throws RecognitionException {
 		MoreHashContentContext _localctx = new MoreHashContentContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_moreHashContent);
+		enterRule(_localctx, 36, RULE_moreHashContent);
 		int _la;
 		try {
 			_localctx = new MreHshCntMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(247);
+			setState(237);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMA) {
 				{
 				{
-				setState(243);
+				setState(233);
 				match(COMA);
-				setState(244);
+				setState(234);
 				hashContent();
 				}
 				}
-				setState(249);
+				setState(239);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2571,27 +2387,27 @@ public class ownParser extends Parser {
 
 	public final ExpressionListContext expressionList() throws RecognitionException {
 		ExpressionListContext _localctx = new ExpressionListContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_expressionList);
+		enterRule(_localctx, 38, RULE_expressionList);
 		int _la;
 		try {
 			_localctx = new ExprLstMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(250);
+			setState(240);
 			expression();
-			setState(255);
+			setState(245);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMA) {
 				{
 				{
-				setState(251);
+				setState(241);
 				match(COMA);
-				setState(252);
+				setState(242);
 				expression();
 				}
 				}
-				setState(257);
+				setState(247);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2644,18 +2460,18 @@ public class ownParser extends Parser {
 
 	public final PrintExpressionContext printExpression() throws RecognitionException {
 		PrintExpressionContext _localctx = new PrintExpressionContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_printExpression);
+		enterRule(_localctx, 40, RULE_printExpression);
 		try {
 			_localctx = new PrtExprMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(258);
+			setState(248);
 			match(PUTS);
-			setState(259);
+			setState(249);
 			match(PIZQ);
-			setState(260);
+			setState(250);
 			expression();
-			setState(261);
+			setState(251);
 			match(PDER);
 			}
 		}
@@ -2734,24 +2550,24 @@ public class ownParser extends Parser {
 
 	public final IfExpressionContext ifExpression() throws RecognitionException {
 		IfExpressionContext _localctx = new IfExpressionContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_ifExpression);
+		enterRule(_localctx, 42, RULE_ifExpression);
 		try {
-			setState(273);
+			setState(263);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,26,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
 			case 1:
 				_localctx = new IfElseExprMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(263);
+				setState(253);
 				match(IF);
-				setState(264);
+				setState(254);
 				expression();
-				setState(265);
+				setState(255);
 				blockStatement();
-				setState(266);
+				setState(256);
 				match(ELSE);
-				setState(267);
+				setState(257);
 				blockStatement();
 				}
 				break;
@@ -2759,11 +2575,11 @@ public class ownParser extends Parser {
 				_localctx = new IfExprMonkeyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(269);
+				setState(259);
 				match(IF);
-				setState(270);
+				setState(260);
 				expression();
-				setState(271);
+				setState(261);
 				blockStatement();
 				}
 				break;
@@ -2818,29 +2634,29 @@ public class ownParser extends Parser {
 
 	public final BlockStatementContext blockStatement() throws RecognitionException {
 		BlockStatementContext _localctx = new BlockStatementContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_blockStatement);
+		enterRule(_localctx, 44, RULE_blockStatement);
 		int _la;
 		try {
 			_localctx = new BlckStMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(275);
+			setState(265);
 			match(LIZQ);
-			setState(279);
+			setState(269);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CIZQ) | (1L << PIZQ) | (1L << LIZQ) | (1L << LET) | (1L << RETURN) | (1L << LEN) | (1L << FIRST) | (1L << LAST) | (1L << REST) | (1L << PUSH) | (1L << FN) | (1L << PUTS) | (1L << IF) | (1L << TRUE) | (1L << FALSE) | (1L << ID) | (1L << INTEGER) | (1L << STRING))) != 0)) {
 				{
 				{
-				setState(276);
+				setState(266);
 				statement();
 				}
 				}
-				setState(281);
+				setState(271);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(282);
+			setState(272);
 			match(LDER);
 			}
 		}
@@ -2888,12 +2704,12 @@ public class ownParser extends Parser {
 
 	public final IdentifierContext identifier() throws RecognitionException {
 		IdentifierContext _localctx = new IdentifierContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_identifier);
+		enterRule(_localctx, 46, RULE_identifier);
 		try {
 			_localctx = new IdMonkeyContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(284);
+			setState(274);
 			match(ID);
 			}
 		}
@@ -2909,104 +2725,100 @@ public class ownParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3(\u0121\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3(\u0117\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\3\2\7\2:\n\2\f\2\16\2=\13\2\3\3\3\3\3\3"+
-		"\3\3\3\3\5\3D\n\3\3\4\3\4\3\4\3\4\3\4\5\4K\n\4\3\5\3\5\3\5\5\5P\n\5\3"+
-		"\6\3\6\3\6\5\6U\n\6\3\7\3\7\3\7\3\b\3\b\7\b\\\n\b\f\b\16\b_\13\b\3\b\3"+
-		"\b\7\bc\n\b\f\b\16\bf\13\b\3\b\3\b\7\bj\n\b\f\b\16\bm\13\b\3\b\3\b\7\b"+
-		"q\n\b\f\b\16\bt\13\b\3\b\3\b\7\bx\n\b\f\b\16\b{\13\b\5\b}\n\b\3\t\3\t"+
-		"\3\t\3\n\3\n\7\n\u0084\n\n\f\n\16\n\u0087\13\n\3\n\3\n\7\n\u008b\n\n\f"+
-		"\n\16\n\u008e\13\n\5\n\u0090\n\n\3\13\3\13\3\13\3\f\3\f\7\f\u0097\n\f"+
-		"\f\f\16\f\u009a\13\f\3\f\3\f\7\f\u009e\n\f\f\f\16\f\u00a1\13\f\5\f\u00a3"+
-		"\n\f\3\r\3\r\3\r\5\r\u00a8\n\r\3\16\3\16\3\16\3\16\3\16\6\16\u00af\n\16"+
-		"\r\16\16\16\u00b0\3\17\3\17\3\17\3\17\3\17\6\17\u00b8\n\17\r\17\16\17"+
-		"\u00b9\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
-		"\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u00cf\n\20\3\21\3\21\3\21\3\21\3\21"+
-		"\5\21\u00d6\n\21\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23\3\24"+
-		"\3\24\3\24\7\24\u00e5\n\24\f\24\16\24\u00e8\13\24\3\24\5\24\u00eb\n\24"+
-		"\3\25\3\25\3\25\3\25\3\25\3\26\3\26\3\26\3\26\3\27\3\27\7\27\u00f8\n\27"+
-		"\f\27\16\27\u00fb\13\27\3\30\3\30\3\30\7\30\u0100\n\30\f\30\16\30\u0103"+
-		"\13\30\3\31\3\31\3\31\3\31\3\31\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32"+
-		"\3\32\3\32\5\32\u0114\n\32\3\33\3\33\7\33\u0118\n\33\f\33\16\33\u011b"+
-		"\13\33\3\33\3\33\3\34\3\34\3\34\2\2\35\2\4\6\b\n\f\16\20\22\24\26\30\32"+
-		"\34\36 \"$&(*,.\60\62\64\66\2\2\2\u0133\2;\3\2\2\2\4C\3\2\2\2\6E\3\2\2"+
-		"\2\bL\3\2\2\2\nQ\3\2\2\2\fV\3\2\2\2\16|\3\2\2\2\20~\3\2\2\2\22\u008f\3"+
-		"\2\2\2\24\u0091\3\2\2\2\26\u00a2\3\2\2\2\30\u00a7\3\2\2\2\32\u00a9\3\2"+
-		"\2\2\34\u00b2\3\2\2\2\36\u00ce\3\2\2\2 \u00d5\3\2\2\2\"\u00d7\3\2\2\2"+
-		"$\u00db\3\2\2\2&\u00ea\3\2\2\2(\u00ec\3\2\2\2*\u00f1\3\2\2\2,\u00f9\3"+
-		"\2\2\2.\u00fc\3\2\2\2\60\u0104\3\2\2\2\62\u0113\3\2\2\2\64\u0115\3\2\2"+
-		"\2\66\u011e\3\2\2\28:\5\4\3\298\3\2\2\2:=\3\2\2\2;9\3\2\2\2;<\3\2\2\2"+
-		"<\3\3\2\2\2=;\3\2\2\2>?\7\26\2\2?D\5\6\4\2@A\7\27\2\2AD\5\b\5\2BD\5\n"+
-		"\6\2C>\3\2\2\2C@\3\2\2\2CB\3\2\2\2D\5\3\2\2\2EF\7#\2\2FG\7\20\2\2GJ\5"+
-		"\f\7\2HK\7\3\2\2IK\3\2\2\2JH\3\2\2\2JI\3\2\2\2K\7\3\2\2\2LO\5\f\7\2MP"+
-		"\7\3\2\2NP\3\2\2\2OM\3\2\2\2ON\3\2\2\2P\t\3\2\2\2QT\5\f\7\2RU\7\3\2\2"+
-		"SU\3\2\2\2TR\3\2\2\2TS\3\2\2\2U\13\3\2\2\2VW\5\20\t\2WX\5\16\b\2X\r\3"+
-		"\2\2\2YZ\7\f\2\2Z\\\5\20\t\2[Y\3\2\2\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2"+
-		"^}\3\2\2\2_]\3\2\2\2`a\7\r\2\2ac\5\20\t\2b`\3\2\2\2cf\3\2\2\2db\3\2\2"+
-		"\2de\3\2\2\2e}\3\2\2\2fd\3\2\2\2gh\7\16\2\2hj\5\20\t\2ig\3\2\2\2jm\3\2"+
-		"\2\2ki\3\2\2\2kl\3\2\2\2l}\3\2\2\2mk\3\2\2\2no\7\17\2\2oq\5\20\t\2pn\3"+
-		"\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2s}\3\2\2\2tr\3\2\2\2uv\7\21\2\2vx"+
-		"\5\20\t\2wu\3\2\2\2x{\3\2\2\2yw\3\2\2\2yz\3\2\2\2z}\3\2\2\2{y\3\2\2\2"+
-		"|]\3\2\2\2|d\3\2\2\2|k\3\2\2\2|r\3\2\2\2|y\3\2\2\2}\17\3\2\2\2~\177\5"+
-		"\24\13\2\177\u0080\5\22\n\2\u0080\21\3\2\2\2\u0081\u0082\7\22\2\2\u0082"+
-		"\u0084\5\24\13\2\u0083\u0081\3\2\2\2\u0084\u0087\3\2\2\2\u0085\u0083\3"+
-		"\2\2\2\u0085\u0086\3\2\2\2\u0086\u0090\3\2\2\2\u0087\u0085\3\2\2\2\u0088"+
-		"\u0089\7\23\2\2\u0089\u008b\5\24\13\2\u008a\u0088\3\2\2\2\u008b\u008e"+
-		"\3\2\2\2\u008c\u008a\3\2\2\2\u008c\u008d\3\2\2\2\u008d\u0090\3\2\2\2\u008e"+
-		"\u008c\3\2\2\2\u008f\u0085\3\2\2\2\u008f\u008c\3\2\2\2\u0090\23\3\2\2"+
-		"\2\u0091\u0092\5\30\r\2\u0092\u0093\5\26\f\2\u0093\25\3\2\2\2\u0094\u0095"+
-		"\7\24\2\2\u0095\u0097\5\30\r\2\u0096\u0094\3\2\2\2\u0097\u009a\3\2\2\2"+
-		"\u0098\u0096\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u00a3\3\2\2\2\u009a\u0098"+
-		"\3\2\2\2\u009b\u009c\7\25\2\2\u009c\u009e\5\30\r\2\u009d\u009b\3\2\2\2"+
-		"\u009e\u00a1\3\2\2\2\u009f\u009d\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\u00a3"+
-		"\3\2\2\2\u00a1\u009f\3\2\2\2\u00a2\u0098\3\2\2\2\u00a2\u009f\3\2\2\2\u00a3"+
-		"\27\3\2\2\2\u00a4\u00a8\5\32\16\2\u00a5\u00a8\5\34\17\2\u00a6\u00a8\5"+
-		"\36\20\2\u00a7\u00a4\3\2\2\2\u00a7\u00a5\3\2\2\2\u00a7\u00a6\3\2\2\2\u00a8"+
-		"\31\3\2\2\2\u00a9\u00ae\5\36\20\2\u00aa\u00ab\7\5\2\2\u00ab\u00ac\5\f"+
-		"\7\2\u00ac\u00ad\7\6\2\2\u00ad\u00af\3\2\2\2\u00ae\u00aa\3\2\2\2\u00af"+
-		"\u00b0\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b0\u00b1\3\2\2\2\u00b1\33\3\2\2"+
-		"\2\u00b2\u00b7\5\36\20\2\u00b3\u00b4\7\7\2\2\u00b4\u00b5\5.\30\2\u00b5"+
-		"\u00b6\7\b\2\2\u00b6\u00b8\3\2\2\2\u00b7\u00b3\3\2\2\2\u00b8\u00b9\3\2"+
-		"\2\2\u00b9\u00b7\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\35\3\2\2\2\u00bb\u00cf"+
-		"\7$\2\2\u00bc\u00cf\7%\2\2\u00bd\u00cf\5\66\34\2\u00be\u00cf\7!\2\2\u00bf"+
-		"\u00cf\7\"\2\2\u00c0\u00c1\7\7\2\2\u00c1\u00c2\5\f\7\2\u00c2\u00c3\7\b"+
-		"\2\2\u00c3\u00cf\3\2\2\2\u00c4\u00cf\5\"\22\2\u00c5\u00c6\5 \21\2\u00c6"+
-		"\u00c7\7\7\2\2\u00c7\u00c8\5.\30\2\u00c8\u00c9\7\b\2\2\u00c9\u00cf\3\2"+
-		"\2\2\u00ca\u00cf\5$\23\2\u00cb\u00cf\5(\25\2\u00cc\u00cf\5\60\31\2\u00cd"+
-		"\u00cf\5\62\32\2\u00ce\u00bb\3\2\2\2\u00ce\u00bc\3\2\2\2\u00ce\u00bd\3"+
-		"\2\2\2\u00ce\u00be\3\2\2\2\u00ce\u00bf\3\2\2\2\u00ce\u00c0\3\2\2\2\u00ce"+
-		"\u00c4\3\2\2\2\u00ce\u00c5\3\2\2\2\u00ce\u00ca\3\2\2\2\u00ce\u00cb\3\2"+
-		"\2\2\u00ce\u00cc\3\2\2\2\u00ce\u00cd\3\2\2\2\u00cf\37\3\2\2\2\u00d0\u00d6"+
-		"\7\30\2\2\u00d1\u00d6\7\31\2\2\u00d2\u00d6\7\32\2\2\u00d3\u00d6\7\33\2"+
-		"\2\u00d4\u00d6\7\34\2\2\u00d5\u00d0\3\2\2\2\u00d5\u00d1\3\2\2\2\u00d5"+
-		"\u00d2\3\2\2\2\u00d5\u00d3\3\2\2\2\u00d5\u00d4\3\2\2\2\u00d6!\3\2\2\2"+
-		"\u00d7\u00d8\7\5\2\2\u00d8\u00d9\5.\30\2\u00d9\u00da\7\6\2\2\u00da#\3"+
-		"\2\2\2\u00db\u00dc\7\35\2\2\u00dc\u00dd\7\7\2\2\u00dd\u00de\5&\24\2\u00de"+
-		"\u00df\7\b\2\2\u00df\u00e0\5\64\33\2\u00e0%\3\2\2\2\u00e1\u00e6\7#\2\2"+
-		"\u00e2\u00e3\7\4\2\2\u00e3\u00e5\7#\2\2\u00e4\u00e2\3\2\2\2\u00e5\u00e8"+
-		"\3\2\2\2\u00e6\u00e4\3\2\2\2\u00e6\u00e7\3\2\2\2\u00e7\u00eb\3\2\2\2\u00e8"+
-		"\u00e6\3\2\2\2\u00e9\u00eb\3\2\2\2\u00ea\u00e1\3\2\2\2\u00ea\u00e9\3\2"+
-		"\2\2\u00eb\'\3\2\2\2\u00ec\u00ed\7\t\2\2\u00ed\u00ee\5*\26\2\u00ee\u00ef"+
-		"\5,\27\2\u00ef\u00f0\7\n\2\2\u00f0)\3\2\2\2\u00f1\u00f2\5\f\7\2\u00f2"+
-		"\u00f3\7\13\2\2\u00f3\u00f4\5\f\7\2\u00f4+\3\2\2\2\u00f5\u00f6\7\4\2\2"+
-		"\u00f6\u00f8\5*\26\2\u00f7\u00f5\3\2\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00f7"+
-		"\3\2\2\2\u00f9\u00fa\3\2\2\2\u00fa-\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fc"+
-		"\u0101\5\f\7\2\u00fd\u00fe\7\4\2\2\u00fe\u0100\5\f\7\2\u00ff\u00fd\3\2"+
-		"\2\2\u0100\u0103\3\2\2\2\u0101\u00ff\3\2\2\2\u0101\u0102\3\2\2\2\u0102"+
-		"/\3\2\2\2\u0103\u0101\3\2\2\2\u0104\u0105\7\36\2\2\u0105\u0106\7\7\2\2"+
-		"\u0106\u0107\5\f\7\2\u0107\u0108\7\b\2\2\u0108\61\3\2\2\2\u0109\u010a"+
-		"\7\37\2\2\u010a\u010b\5\f\7\2\u010b\u010c\5\64\33\2\u010c\u010d\7 \2\2"+
-		"\u010d\u010e\5\64\33\2\u010e\u0114\3\2\2\2\u010f\u0110\7\37\2\2\u0110"+
-		"\u0111\5\f\7\2\u0111\u0112\5\64\33\2\u0112\u0114\3\2\2\2\u0113\u0109\3"+
-		"\2\2\2\u0113\u010f\3\2\2\2\u0114\63\3\2\2\2\u0115\u0119\7\t\2\2\u0116"+
-		"\u0118\5\4\3\2\u0117\u0116\3\2\2\2\u0118\u011b\3\2\2\2\u0119\u0117\3\2"+
-		"\2\2\u0119\u011a\3\2\2\2\u011a\u011c\3\2\2\2\u011b\u0119\3\2\2\2\u011c"+
-		"\u011d\7\n\2\2\u011d\65\3\2\2\2\u011e\u011f\7#\2\2\u011f\67\3\2\2\2\36"+
-		";CJOT]dkry|\u0085\u008c\u008f\u0098\u009f\u00a2\u00a7\u00b0\u00b9\u00ce"+
-		"\u00d5\u00e6\u00ea\u00f9\u0101\u0113\u0119";
+		"\3\2\7\2\64\n\2\f\2\16\2\67\13\2\3\3\3\3\3\3\3\3\3\3\5\3>\n\3\3\4\3\4"+
+		"\3\4\3\4\3\4\5\4E\n\4\3\5\3\5\3\5\5\5J\n\5\3\6\3\6\3\6\5\6O\n\6\3\7\3"+
+		"\7\3\7\7\7T\n\7\f\7\16\7W\13\7\3\7\3\7\3\7\7\7\\\n\7\f\7\16\7_\13\7\3"+
+		"\7\3\7\3\7\7\7d\n\7\f\7\16\7g\13\7\3\7\3\7\3\7\7\7l\n\7\f\7\16\7o\13\7"+
+		"\3\7\3\7\3\7\7\7t\n\7\f\7\16\7w\13\7\5\7y\n\7\3\b\3\b\3\b\7\b~\n\b\f\b"+
+		"\16\b\u0081\13\b\3\b\3\b\3\b\7\b\u0086\n\b\f\b\16\b\u0089\13\b\5\b\u008b"+
+		"\n\b\3\t\3\t\3\t\7\t\u0090\n\t\f\t\16\t\u0093\13\t\3\t\3\t\3\t\7\t\u0098"+
+		"\n\t\f\t\16\t\u009b\13\t\5\t\u009d\n\t\3\n\3\n\3\n\5\n\u00a2\n\n\3\13"+
+		"\3\13\3\13\3\13\3\13\6\13\u00a9\n\13\r\13\16\13\u00aa\3\f\3\f\3\f\3\f"+
+		"\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3"+
+		"\r\3\r\3\r\5\r\u00c5\n\r\3\16\3\16\3\16\3\16\3\16\5\16\u00cc\n\16\3\17"+
+		"\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\7\21\u00db"+
+		"\n\21\f\21\16\21\u00de\13\21\3\21\5\21\u00e1\n\21\3\22\3\22\3\22\3\22"+
+		"\3\22\3\23\3\23\3\23\3\23\3\24\3\24\7\24\u00ee\n\24\f\24\16\24\u00f1\13"+
+		"\24\3\25\3\25\3\25\7\25\u00f6\n\25\f\25\16\25\u00f9\13\25\3\26\3\26\3"+
+		"\26\3\26\3\26\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\5\27\u010a"+
+		"\n\27\3\30\3\30\7\30\u010e\n\30\f\30\16\30\u0111\13\30\3\30\3\30\3\31"+
+		"\3\31\3\31\2\2\32\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\2"+
+		"\2\2\u012b\2\65\3\2\2\2\4=\3\2\2\2\6?\3\2\2\2\bF\3\2\2\2\nK\3\2\2\2\f"+
+		"x\3\2\2\2\16\u008a\3\2\2\2\20\u009c\3\2\2\2\22\u00a1\3\2\2\2\24\u00a3"+
+		"\3\2\2\2\26\u00ac\3\2\2\2\30\u00c4\3\2\2\2\32\u00cb\3\2\2\2\34\u00cd\3"+
+		"\2\2\2\36\u00d1\3\2\2\2 \u00e0\3\2\2\2\"\u00e2\3\2\2\2$\u00e7\3\2\2\2"+
+		"&\u00ef\3\2\2\2(\u00f2\3\2\2\2*\u00fa\3\2\2\2,\u0109\3\2\2\2.\u010b\3"+
+		"\2\2\2\60\u0114\3\2\2\2\62\64\5\4\3\2\63\62\3\2\2\2\64\67\3\2\2\2\65\63"+
+		"\3\2\2\2\65\66\3\2\2\2\66\3\3\2\2\2\67\65\3\2\2\289\7\26\2\29>\5\6\4\2"+
+		":;\7\27\2\2;>\5\b\5\2<>\5\n\6\2=8\3\2\2\2=:\3\2\2\2=<\3\2\2\2>\5\3\2\2"+
+		"\2?@\7#\2\2@A\7\20\2\2AD\5\f\7\2BE\7\3\2\2CE\3\2\2\2DB\3\2\2\2DC\3\2\2"+
+		"\2E\7\3\2\2\2FI\5\f\7\2GJ\7\3\2\2HJ\3\2\2\2IG\3\2\2\2IH\3\2\2\2J\t\3\2"+
+		"\2\2KN\5\f\7\2LO\7\3\2\2MO\3\2\2\2NL\3\2\2\2NM\3\2\2\2O\13\3\2\2\2PU\5"+
+		"\16\b\2QR\7\f\2\2RT\5\16\b\2SQ\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2V"+
+		"y\3\2\2\2WU\3\2\2\2X]\5\16\b\2YZ\7\r\2\2Z\\\5\16\b\2[Y\3\2\2\2\\_\3\2"+
+		"\2\2][\3\2\2\2]^\3\2\2\2^y\3\2\2\2_]\3\2\2\2`e\5\16\b\2ab\7\16\2\2bd\5"+
+		"\16\b\2ca\3\2\2\2dg\3\2\2\2ec\3\2\2\2ef\3\2\2\2fy\3\2\2\2ge\3\2\2\2hm"+
+		"\5\16\b\2ij\7\17\2\2jl\5\16\b\2ki\3\2\2\2lo\3\2\2\2mk\3\2\2\2mn\3\2\2"+
+		"\2ny\3\2\2\2om\3\2\2\2pu\5\16\b\2qr\7\21\2\2rt\5\16\b\2sq\3\2\2\2tw\3"+
+		"\2\2\2us\3\2\2\2uv\3\2\2\2vy\3\2\2\2wu\3\2\2\2xP\3\2\2\2xX\3\2\2\2x`\3"+
+		"\2\2\2xh\3\2\2\2xp\3\2\2\2y\r\3\2\2\2z\177\5\20\t\2{|\7\22\2\2|~\5\20"+
+		"\t\2}{\3\2\2\2~\u0081\3\2\2\2\177}\3\2\2\2\177\u0080\3\2\2\2\u0080\u008b"+
+		"\3\2\2\2\u0081\177\3\2\2\2\u0082\u0087\5\20\t\2\u0083\u0084\7\23\2\2\u0084"+
+		"\u0086\5\20\t\2\u0085\u0083\3\2\2\2\u0086\u0089\3\2\2\2\u0087\u0085\3"+
+		"\2\2\2\u0087\u0088\3\2\2\2\u0088\u008b\3\2\2\2\u0089\u0087\3\2\2\2\u008a"+
+		"z\3\2\2\2\u008a\u0082\3\2\2\2\u008b\17\3\2\2\2\u008c\u0091\5\22\n\2\u008d"+
+		"\u008e\7\24\2\2\u008e\u0090\5\22\n\2\u008f\u008d\3\2\2\2\u0090\u0093\3"+
+		"\2\2\2\u0091\u008f\3\2\2\2\u0091\u0092\3\2\2\2\u0092\u009d\3\2\2\2\u0093"+
+		"\u0091\3\2\2\2\u0094\u0099\5\22\n\2\u0095\u0096\7\25\2\2\u0096\u0098\5"+
+		"\22\n\2\u0097\u0095\3\2\2\2\u0098\u009b\3\2\2\2\u0099\u0097\3\2\2\2\u0099"+
+		"\u009a\3\2\2\2\u009a\u009d\3\2\2\2\u009b\u0099\3\2\2\2\u009c\u008c\3\2"+
+		"\2\2\u009c\u0094\3\2\2\2\u009d\21\3\2\2\2\u009e\u00a2\5\24\13\2\u009f"+
+		"\u00a2\5\26\f\2\u00a0\u00a2\5\30\r\2\u00a1\u009e\3\2\2\2\u00a1\u009f\3"+
+		"\2\2\2\u00a1\u00a0\3\2\2\2\u00a2\23\3\2\2\2\u00a3\u00a8\5\30\r\2\u00a4"+
+		"\u00a5\7\5\2\2\u00a5\u00a6\5\f\7\2\u00a6\u00a7\7\6\2\2\u00a7\u00a9\3\2"+
+		"\2\2\u00a8\u00a4\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa\u00a8\3\2\2\2\u00aa"+
+		"\u00ab\3\2\2\2\u00ab\25\3\2\2\2\u00ac\u00ad\5\30\r\2\u00ad\u00ae\7\7\2"+
+		"\2\u00ae\u00af\5(\25\2\u00af\u00b0\7\b\2\2\u00b0\27\3\2\2\2\u00b1\u00c5"+
+		"\7$\2\2\u00b2\u00c5\7%\2\2\u00b3\u00c5\5\60\31\2\u00b4\u00c5\7!\2\2\u00b5"+
+		"\u00c5\7\"\2\2\u00b6\u00b7\7\7\2\2\u00b7\u00b8\5\f\7\2\u00b8\u00b9\7\b"+
+		"\2\2\u00b9\u00c5\3\2\2\2\u00ba\u00c5\5\34\17\2\u00bb\u00bc\5\32\16\2\u00bc"+
+		"\u00bd\7\7\2\2\u00bd\u00be\5\30\r\2\u00be\u00bf\7\b\2\2\u00bf\u00c5\3"+
+		"\2\2\2\u00c0\u00c5\5\36\20\2\u00c1\u00c5\5\"\22\2\u00c2\u00c5\5*\26\2"+
+		"\u00c3\u00c5\5,\27\2\u00c4\u00b1\3\2\2\2\u00c4\u00b2\3\2\2\2\u00c4\u00b3"+
+		"\3\2\2\2\u00c4\u00b4\3\2\2\2\u00c4\u00b5\3\2\2\2\u00c4\u00b6\3\2\2\2\u00c4"+
+		"\u00ba\3\2\2\2\u00c4\u00bb\3\2\2\2\u00c4\u00c0\3\2\2\2\u00c4\u00c1\3\2"+
+		"\2\2\u00c4\u00c2\3\2\2\2\u00c4\u00c3\3\2\2\2\u00c5\31\3\2\2\2\u00c6\u00cc"+
+		"\7\30\2\2\u00c7\u00cc\7\31\2\2\u00c8\u00cc\7\32\2\2\u00c9\u00cc\7\33\2"+
+		"\2\u00ca\u00cc\7\34\2\2\u00cb\u00c6\3\2\2\2\u00cb\u00c7\3\2\2\2\u00cb"+
+		"\u00c8\3\2\2\2\u00cb\u00c9\3\2\2\2\u00cb\u00ca\3\2\2\2\u00cc\33\3\2\2"+
+		"\2\u00cd\u00ce\7\5\2\2\u00ce\u00cf\5(\25\2\u00cf\u00d0\7\6\2\2\u00d0\35"+
+		"\3\2\2\2\u00d1\u00d2\7\35\2\2\u00d2\u00d3\7\7\2\2\u00d3\u00d4\5 \21\2"+
+		"\u00d4\u00d5\7\b\2\2\u00d5\u00d6\5.\30\2\u00d6\37\3\2\2\2\u00d7\u00dc"+
+		"\7#\2\2\u00d8\u00d9\7\4\2\2\u00d9\u00db\7#\2\2\u00da\u00d8\3\2\2\2\u00db"+
+		"\u00de\3\2\2\2\u00dc\u00da\3\2\2\2\u00dc\u00dd\3\2\2\2\u00dd\u00e1\3\2"+
+		"\2\2\u00de\u00dc\3\2\2\2\u00df\u00e1\3\2\2\2\u00e0\u00d7\3\2\2\2\u00e0"+
+		"\u00df\3\2\2\2\u00e1!\3\2\2\2\u00e2\u00e3\7\t\2\2\u00e3\u00e4\5$\23\2"+
+		"\u00e4\u00e5\5&\24\2\u00e5\u00e6\7\n\2\2\u00e6#\3\2\2\2\u00e7\u00e8\5"+
+		"\f\7\2\u00e8\u00e9\7\13\2\2\u00e9\u00ea\5\f\7\2\u00ea%\3\2\2\2\u00eb\u00ec"+
+		"\7\4\2\2\u00ec\u00ee\5$\23\2\u00ed\u00eb\3\2\2\2\u00ee\u00f1\3\2\2\2\u00ef"+
+		"\u00ed\3\2\2\2\u00ef\u00f0\3\2\2\2\u00f0\'\3\2\2\2\u00f1\u00ef\3\2\2\2"+
+		"\u00f2\u00f7\5\f\7\2\u00f3\u00f4\7\4\2\2\u00f4\u00f6\5\f\7\2\u00f5\u00f3"+
+		"\3\2\2\2\u00f6\u00f9\3\2\2\2\u00f7\u00f5\3\2\2\2\u00f7\u00f8\3\2\2\2\u00f8"+
+		")\3\2\2\2\u00f9\u00f7\3\2\2\2\u00fa\u00fb\7\36\2\2\u00fb\u00fc\7\7\2\2"+
+		"\u00fc\u00fd\5\f\7\2\u00fd\u00fe\7\b\2\2\u00fe+\3\2\2\2\u00ff\u0100\7"+
+		"\37\2\2\u0100\u0101\5\f\7\2\u0101\u0102\5.\30\2\u0102\u0103\7 \2\2\u0103"+
+		"\u0104\5.\30\2\u0104\u010a\3\2\2\2\u0105\u0106\7\37\2\2\u0106\u0107\5"+
+		"\f\7\2\u0107\u0108\5.\30\2\u0108\u010a\3\2\2\2\u0109\u00ff\3\2\2\2\u0109"+
+		"\u0105\3\2\2\2\u010a-\3\2\2\2\u010b\u010f\7\t\2\2\u010c\u010e\5\4\3\2"+
+		"\u010d\u010c\3\2\2\2\u010e\u0111\3\2\2\2\u010f\u010d\3\2\2\2\u010f\u0110"+
+		"\3\2\2\2\u0110\u0112\3\2\2\2\u0111\u010f\3\2\2\2\u0112\u0113\7\n\2\2\u0113"+
+		"/\3\2\2\2\u0114\u0115\7#\2\2\u0115\61\3\2\2\2\35\65=DINU]emux\177\u0087"+
+		"\u008a\u0091\u0099\u009c\u00a1\u00aa\u00c4\u00cb\u00dc\u00e0\u00ef\u00f7"+
+		"\u0109\u010f";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

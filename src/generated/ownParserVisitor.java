@@ -1,4 +1,4 @@
-// Generated from C:/Users/julio/Desktop/ProyectoII/src\ownParser.g4 by ANTLR 4.7
+// Generated from C:/Users/julio/Desktop/AvanceIII/src\ownParser.g4 by ANTLR 4.7
 package generated;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -60,85 +60,64 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExprStMonkey(ownParser.ExprStMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ExprMonkey}
-	 * labeled alternative in {@link ownParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExprMonkey(ownParser.ExprMonkeyContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code CompMenMonkey}
-	 * labeled alternative in {@link ownParser#comparison}.
+	 * labeled alternative in {@link ownParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCompMenMonkey(ownParser.CompMenMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code CompMayMonkey}
-	 * labeled alternative in {@link ownParser#comparison}.
+	 * labeled alternative in {@link ownParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCompMayMonkey(ownParser.CompMayMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code CompMeIMonkey}
-	 * labeled alternative in {@link ownParser#comparison}.
+	 * labeled alternative in {@link ownParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCompMeIMonkey(ownParser.CompMeIMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code CompMaIMonkey}
-	 * labeled alternative in {@link ownParser#comparison}.
+	 * labeled alternative in {@link ownParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCompMaIMonkey(ownParser.CompMaIMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code CompIgMonkey}
-	 * labeled alternative in {@link ownParser#comparison}.
+	 * labeled alternative in {@link ownParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCompIgMonkey(ownParser.CompIgMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code AddExprMonkey}
-	 * labeled alternative in {@link ownParser#additionExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAddExprMonkey(ownParser.AddExprMonkeyContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code AddFSumMonkey}
-	 * labeled alternative in {@link ownParser#additionFactor}.
+	 * labeled alternative in {@link ownParser#additionExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAddFSumMonkey(ownParser.AddFSumMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code AddFSubMonkey}
-	 * labeled alternative in {@link ownParser#additionFactor}.
+	 * labeled alternative in {@link ownParser#additionExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAddFSubMonkey(ownParser.AddFSubMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code MulExprMonkey}
-	 * labeled alternative in {@link ownParser#multiplicationExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMulExprMonkey(ownParser.MulExprMonkeyContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code MulFMulMonkey}
-	 * labeled alternative in {@link ownParser#multiplicationFactor}.
+	 * labeled alternative in {@link ownParser#multiplicationExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMulFMulMonkey(ownParser.MulFMulMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code MulFDivMonkey}
-	 * labeled alternative in {@link ownParser#multiplicationFactor}.
+	 * labeled alternative in {@link ownParser#multiplicationExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
@@ -193,12 +172,12 @@ public interface ownParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrimExprStrMonkey(ownParser.PrimExprStrMonkeyContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code PrimExprIdenMonkey}
+	 * Visit a parse tree produced by the {@code PrimExprIdMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrimExprIdenMonkey(ownParser.PrimExprIdenMonkeyContext ctx);
+	T visitPrimExprIdMonkey(ownParser.PrimExprIdMonkeyContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code PrimExprTMonkey}
 	 * labeled alternative in {@link ownParser#primitiveExpression}.
